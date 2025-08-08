@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('logistics_load', function (Blueprint $table) {
             $table->id();
             $table->foreignId('company_id')->nullable()->constrained('users')->onDelete('set null');
+      
 
             // Pickup Information
             $table->string('pickup_location');
@@ -97,6 +98,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('logistics_load');
+        Schema::enableForeignKeyConstraints();
     }
 };

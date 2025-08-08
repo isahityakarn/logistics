@@ -11,7 +11,7 @@ class LoadBid extends Model
     
     protected $fillable = [
         'logisticjob_id',
-        'company_id',
+        'driver_id',
         'price',
         'status'
     ];
@@ -25,8 +25,13 @@ class LoadBid extends Model
         return $this->belongsTo(LogisticsLoad::class, 'logisticjob_id');
     }
 
-    public function company(): BelongsTo
+    public function logisticsLoad(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'company_id');
+        return $this->belongsTo(LogisticsLoad::class, 'logisticjob_id');
+    }
+
+    public function driver(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'driver_id');
     }
 }

@@ -5,7 +5,22 @@
 
 @section('content')
     <div class="row mb-4">
-        <div class="col-md-3 mb-3">
+                          <div class="d-grid gap-2">
+                        <a href="{{ route('driver.logistics-loads.index') }}" class="btn btn-outline-primary">
+                            <i class="bi bi-search"></i>
+                            Available Loads
+                        </a>
+                        <a href="{{ route('driver.logistics-loads.index') }}?status=assigned&driver={{ Auth::id() }}"
+                            class="btn btn-outline-success">
+                            <i class="bi bi-list-check"></i>
+                            My Assigned Loads
+                        </a>
+                        <a href="{{ route('driver.logistics-loads.index') }}?status=completed&driver={{ Auth::id() }}"
+                            class="btn btn-outline-warning">
+                            <i class="bi bi-clock-history"></i>
+                            Load History
+                        </a>
+                    </div>l-md-3 mb-3">
             <div class="card card-shadow border-0 h-100">
                 <div class="card-body text-center">
                     <i class="bi bi-list-check text-primary" style="font-size: 2rem;"></i>
@@ -88,7 +103,7 @@
                                                 <span class="badge bg-warning">Available</span>
                                             </td>
                                             <td>
-                                                <a href="{{ route('driver.logistics-jobs.show', $job) }}"
+                                                <a href="{{ route('driver.logistics-loads.show', $job) }}"
                                                     class="btn btn-sm btn-primary">
                                                     <i class="bi bi-eye"></i>
                                                     View
@@ -100,19 +115,19 @@
                             </table>
                         </div>
                         <div class="text-center mt-3">
-                            <a href="{{ route('driver.logistics-jobs.index') }}" class="btn btn-outline-primary">
+                            <a href="{{ route('driver.logistics-loads.index') }}" class="btn btn-outline-primary">
                                 <i class="bi bi-list-ul"></i>
-                                View All Available Jobs
+                                View All Available Loads
                             </a>
                         </div>
                     @else
                         <div class="text-center py-5">
                             <i class="bi bi-search text-muted" style="font-size: 3rem;"></i>
-                            <h5 class="text-muted mt-3">No jobs available</h5>
+                            <h5 class="text-muted mt-3">No loads available</h5>
                             <p class="text-muted">Check back later for new delivery opportunities.</p>
-                            <a href="{{ route('driver.logistics-jobs.index') }}" class="btn btn-primary">
+                            <a href="{{ route('driver.logistics-loads.index') }}" class="btn btn-primary">
                                 <i class="bi bi-arrow-clockwise"></i>
-                                Refresh Jobs
+                                Refresh Loads
                             </a>
                         </div>
                     @endif

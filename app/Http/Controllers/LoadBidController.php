@@ -66,7 +66,7 @@ class LoadBidController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'logisticjob_id' => 'required|exists:logistics_jobs,id',
+            'logisticjob_id' => 'required|exists:logistics_load,id',
             'company_id' => 'required|exists:users,id',
             'price' => 'required|numeric|min:0',
             'status' => 'required|in:pending,assigned,in_progress,picked_up,in_transit,delivered,completed,cancelled'
@@ -149,7 +149,7 @@ class LoadBidController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'logisticjob_id' => 'required|exists:logistics_jobs,id',
+            'logisticjob_id' => 'required|exists:logistics_load,id',
             'company_id' => 'required|exists:users,id',
             'price' => 'required|numeric|min:0',
             'status' => 'required|in:pending,assigned,in_progress,picked_up,in_transit,delivered,completed,cancelled'

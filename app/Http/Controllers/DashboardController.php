@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use App\Models\LogisticsJob;
+use App\Models\LogisticsLoad;
 
 class DashboardController extends Controller
 {
@@ -57,7 +57,7 @@ class DashboardController extends Controller
         $completedJobs = 55;
         
         // Get recent jobs (all jobs for now since company_id doesn't exist)
-        $recentJobs = LogisticsJob::latest()->take(5)->get();
+        $recentJobs = LogisticsLoad::latest()->take(5)->get();
         
         return view('dashboard.company', compact(
             'totalJobs',
@@ -71,15 +71,13 @@ class DashboardController extends Controller
     public function driverDashboard()
     {
         $user = Auth::user();
-        $availableJobsCount = LogisticsJob::where('status', 'pending')->count();
-        $assignedJobsCount = LogisticsJob::where('driver_id', $user->id)
-            ->whereIn('status', ['assigned', 'in_progress', 'picked_up', 'in_transit'])
+        $availableJobsCount = LogisticsLoad::where('status', 'pending')->count();
+        $assignedJobsCount = LogisticsLoad::whereIn('status', ['assigned', 'in_progress', 'picked_up', 'in_transit'])
             ->count();
-        $completedJobsCount = LogisticsJob::where('driver_id', $user->id)
-            ->where('status', 'completed')
+        $completedJobsCount = LogisticsLoad::where('status', 'completed')
             ->count();
         $totalEarnings = 1000;
-        $availableJobs = LogisticsJob::with('driver')
+        $availableJobs = LogisticsLoad::with('driver')
             ->where('status', 'pending')
             ->latest()
             ->take(5)

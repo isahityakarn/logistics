@@ -24,7 +24,7 @@
                     </div>
                 @endif
 
-                <form method="POST" action="{{ route('driver.logistics-jobs.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('driver.logistics-loads.store') }}" enctype="multipart/form-data">
                     @csrf
                     
                     <div class="row">
@@ -518,7 +518,7 @@
                     <div class="row mt-4">
                         <div class="col-12">
                             <div class="d-flex justify-content-between">
-                                <a href="{{ route('driver.logistics-jobs.index') }}" class="btn btn-secondary">
+                                <a href="{{ route('driver.logistics-loads.index') }}" class="btn btn-secondary">
                                     <i class="bi bi-arrow-left"></i>
                                     Back to Jobs
                                 </a>

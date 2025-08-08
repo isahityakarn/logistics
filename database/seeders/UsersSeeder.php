@@ -14,6 +14,42 @@ class UsersSeeder extends Seeder
      */
     public function run(): void
     {
+        // Create Demo Admin User
+        User::create([
+            'name' => 'System Administrator',
+            'email' => 'admin@logistics.com',
+            'phone' => '+1-555-0001',
+            'address' => '1 Admin Plaza, Corporate City, NY 10001',
+            'company_name' => 'Logistics Platform Admin',
+            'user_type' => 'admin',
+            'password' => Hash::make('admin123'),
+            'email_verified_at' => now(),
+        ]);
+
+        // Create Easy Demo Users for Testing
+        User::create([
+            'name' => 'Demo Driver',
+            'email' => 'driver@demo.com',
+            'phone' => '+1-555-1111',
+            'address' => '123 Driver Street, Demo City, CA 90210',
+            'license_number' => 'DL-DEMO-001',
+            'company_name' => 'Demo Driver Services',
+            'user_type' => 'driver',
+            'password' => Hash::make('driver123'),
+            'email_verified_at' => now(),
+        ]);
+
+        User::create([
+            'name' => 'Demo Company',
+            'email' => 'company@demo.com',
+            'phone' => '+1-555-2222',
+            'address' => '456 Company Boulevard, Demo City, CA 90210',
+            'company_name' => 'Demo Logistics Company',
+            'user_type' => 'company',
+            'password' => Hash::make('company123'),
+            'email_verified_at' => now(),
+        ]);
+
         // Create 10 Driver Users
         $drivers = [
             [
@@ -199,6 +235,6 @@ class UsersSeeder extends Seeder
             ]);
         }
 
-        $this->command->info('Successfully created 10 drivers and 10 companies!');
+        $this->command->info('Successfully created 1 admin, 13 drivers and 10 companies (24 total users)!');
     }
 }

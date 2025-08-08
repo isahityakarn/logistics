@@ -24,7 +24,7 @@
                     </div>
                 @endif
 
-                <form method="POST" action="{{ route('admin.logistics-jobs.update', $logisticsJob) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.logistics-loads.update', $logisticsJob) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     
@@ -555,7 +555,7 @@
                     <div class="row mt-4">
                         <div class="col-12">
                             <div class="d-flex justify-content-between">
-                                <a href="{{ route('admin.logistics-jobs.show', $logisticsJob) }}" class="btn btn-secondary">
+                                <a href="{{ route('admin.logistics-loads.show', $logisticsJob) }}" class="btn btn-secondary">
                                     <i class="bi bi-arrow-left"></i>
                                     Back to Job Details
                                 </a>

@@ -16,10 +16,10 @@
                  </a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link {{ request()->routeIs('admin.logistics-jobs.*') ? 'active' : '' }}"
-                     href="{{ route('admin.logistics-jobs.index') }}">
+                 <a class="nav-link {{ request()->routeIs('admin.logistics-loads.*') ? 'active' : '' }}"
+                     href="{{ route('admin.logistics-loads.index') }}">
                      <i class="bi bi-truck"></i>
-                     Logistics Jobs
+                     Logistics Loads
                  </a>
              </li>
              <li class="nav-item">
@@ -51,10 +51,10 @@
                  </a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link {{ request()->routeIs('company.logistics-jobs.*') ? 'active' : '' }}"
-                     href="{{ route('company.logistics-jobs.index') }}">
+                 <a class="nav-link {{ request()->routeIs('company.logistics-loads.*') ? 'active' : '' }}"
+                     href="{{ route('company.logistics-loads.index') }}">
                      <i class="bi bi-box-seam"></i>
-                      Jobs
+                      Loads
                  </a>
              </li>
           
@@ -67,10 +67,10 @@
                  </a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link {{ request()->routeIs('driver.logistics-jobs.*') ? 'active' : '' }}"
-                     href="{{ route('driver.logistics-jobs.index') }}">
+                 <a class="nav-link {{ request()->routeIs('driver.logistics-loads.*') ? 'active' : '' }}"
+                     href="{{ route('driver.logistics-loads.index') }}">
                      <i class="bi bi-search"></i>
-                     My Jobs
+                     My Loads
                  </a>
              </li>
       

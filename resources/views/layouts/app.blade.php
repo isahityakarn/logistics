@@ -3,7 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{                    <li>
+                        <a href="{{ route('driver.logistics-loads.index') }}" class="{{ request()->routeIs('driver.logistics-loads.*') ? 'active' : '' }}">
+                            <i class="bi bi-box-seam"></i>
+                            Available Loads
+                        </a>
+                    </li>_token() }}">
 
     <title>{{ config('app.name', 'Sahitya Logistic') }} - @yield('title', 'Dashboard')</title>
 
@@ -184,9 +189,9 @@
                 
                 @if(auth()->user()->user_type === 'admin')
                     <li>
-                        <a href="{{ route('admin.logistics-jobs.index') }}" class="{{ request()->routeIs('admin.logistics-jobs.*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.logistics-loads.index') }}" class="{{ request()->routeIs('admin.logistics-loads.*') ? 'active' : '' }}">
                             <i class="bi bi-box-seam"></i>
-                            Manage Jobs
+                            Manage Loads
                         </a>
                     </li>
                     <li>
@@ -209,9 +214,9 @@
                     </li>
                 @elseif(auth()->user()->user_type === 'company')
                     <li>
-                        <a href="{{ route('company.logistics-jobs.index') }}" class="{{ request()->routeIs('company.logistics-jobs.*') ? 'active' : '' }}">
+                        <a href="{{ route('company.logistics-loads.index') }}" class="{{ request()->routeIs('company.logistics-loads.*') ? 'active' : '' }}">
                             <i class="bi bi-box-seam"></i>
-                            My Jobs
+                            My Loads
                         </a>
                     </li>
                     <li>
@@ -228,21 +233,21 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('driver.logistics-jobs.index', ['status' => 'assigned', 'driver' => 'me']) }}" class="{{ request()->input('status') === 'assigned' ? 'active' : '' }}">
+                        <a href="{{ route('driver.logistics-loads.index', ['status' => 'assigned', 'driver' => 'me']) }}" class="{{ request()->input('status') === 'assigned' ? 'active' : '' }}">
                             <i class="bi bi-clipboard-check"></i>
-                            Assigned Jobs
+                            Assigned Loads
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('driver.logistics-jobs.index', ['status' => 'completed', 'driver' => 'me']) }}" class="{{ request()->input('status') === 'completed' ? 'active' : '' }}">
+                        <a href="{{ route('driver.logistics-loads.index', ['status' => 'completed', 'driver' => 'me']) }}" class="{{ request()->input('status') === 'completed' ? 'active' : '' }}">
                             <i class="bi bi-check-circle"></i>
-                            Completed Jobs
+                            Completed Loads
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('driver.logistics-jobs.create') }}" class="{{ request()->routeIs('driver.logistics-jobs.create') ? 'active' : '' }}">
+                        <a href="{{ route('driver.logistics-loads.create') }}" class="{{ request()->routeIs('driver.logistics-loads.create') ? 'active' : '' }}">
                             <i class="bi bi-plus-circle"></i>
-                            Create Job
+                            Create Load
                         </a>
                     </li>
                     <li>

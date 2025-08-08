@@ -9,7 +9,7 @@
         <div class="d-flex justify-content-between align-items-center">
             <h4>All Logistics Jobs</h4>
             @if(Auth::user()->user_type === 'driver')
-                <a href="{{ route('driver.logistics-jobs.create') }}" class="btn btn-primary">
+                <a href="{{ route('driver.logistics-loads.create') }}" class="btn btn-primary">
                     <i class="bi bi-plus-circle"></i>
                     Create New Job
                 </a>
@@ -93,29 +93,29 @@
                                     <td>
                                         <div class="btn-group" role="group">
                                             @if(Auth::user()->user_type === 'admin')
-                                                <a href="{{ route('admin.logistics-jobs.show', $job) }}" class="btn btn-sm btn-outline-info">
+                                                <a href="{{ route('admin.logistics-loads.show', $job) }}" class="btn btn-sm btn-outline-info">
                                                     <i class="bi bi-eye"></i>
                                                 </a>
                                             @elseif(Auth::user()->user_type === 'company')
-                                                <a href="{{ route('company.logistics-jobs.show', $job) }}" class="btn btn-sm btn-outline-info">
+                                                <a href="{{ route('company.logistics-loads.show', $job) }}" class="btn btn-sm btn-outline-info">
                                                     <i class="bi bi-eye"></i>
                                                 </a>
                                             @elseif(Auth::user()->user_type === 'driver')
-                                                <a href="{{ route('driver.logistics-jobs.show', $job) }}" class="btn btn-sm btn-outline-info">
+                                                <a href="{{ route('driver.logistics-loads.show', $job) }}" class="btn btn-sm btn-outline-info">
                                                     <i class="bi bi-eye"></i>
                                                 </a>
                                             @endif
                                             
                                             @if(Auth::user()->user_type === 'driver')
                                                 @if($job->status === 'pending' && !$job->driver_id)
-                                                    <form action="{{ route('driver.logistics-jobs.accept', $job) }}" method="POST" style="display: inline;">
+                                                    <form action="{{ route('driver.logistics-loads.accept', $job) }}" method="POST" style="display: inline;">
                                                         @csrf
                                                         <button type="submit" class="btn btn-sm btn-success" onclick="return confirm('Are you sure you want to accept this job?')">
                                                             <i class="bi bi-check-circle"></i>
                                                         </button>
                                                     </form>
                                                 @elseif($job->driver_id === Auth::id())
-                                                    <a href="{{ route('driver.logistics-jobs.edit', $job) }}" class="btn btn-sm btn-outline-warning">
+                                                    <a href="{{ route('driver.logistics-loads.edit', $job) }}" class="btn btn-sm btn-outline-warning">
                                                         <i class="bi bi-pencil"></i>
                                                     </a>
                                                     <div class="dropdown">
@@ -125,7 +125,7 @@
                                                         <ul class="dropdown-menu">
                                                             @if($job->status === 'assigned')
                                                                 <li>
-                                                                    <form action="{{ route('driver.logistics-jobs.update-status', $job) }}" method="POST">
+                                                                    <form action="{{ route('driver.logistics-loads.update-status', $job) }}" method="POST">
                                                                         @csrf
                                                                         @method('PATCH')
                                                                         <input type="hidden" name="status" value="in_progress">
@@ -136,7 +136,7 @@
                                                                 </li>
                                                             @elseif($job->status === 'in_progress')
                                                                 <li>
-                                                                    <form action="{{ route('driver.logistics-jobs.update-status', $job) }}" method="POST">
+                                                                    <form action="{{ route('driver.logistics-loads.update-status', $job) }}" method="POST">
                                                                         @csrf
                                                                         @method('PATCH')
                                                                         <input type="hidden" name="status" value="picked_up">
@@ -147,7 +147,7 @@
                                                                 </li>
                                                             @elseif($job->status === 'picked_up')
                                                                 <li>
-                                                                    <form action="{{ route('driver.logistics-jobs.update-status', $job) }}" method="POST">
+                                                                    <form action="{{ route('driver.logistics-loads.update-status', $job) }}" method="POST">
                                                                         @csrf
                                                                         @method('PATCH')
                                                                         <input type="hidden" name="status" value="in_transit">
@@ -158,7 +158,7 @@
                                                                 </li>
                                                             @elseif($job->status === 'in_transit')
                                                                 <li>
-                                                                    <form action="{{ route('driver.logistics-jobs.update-status', $job) }}" method="POST">
+                                                                    <form action="{{ route('driver.logistics-loads.update-status', $job) }}" method="POST">
                                                                         @csrf
                                                                         @method('PATCH')
                                                                         <input type="hidden" name="status" value="delivered">
@@ -169,7 +169,7 @@
                                                                 </li>
                                                             @elseif($job->status === 'delivered')
                                                                 <li>
-                                                                    <form action="{{ route('driver.logistics-jobs.update-status', $job) }}" method="POST">
+                                                                    <form action="{{ route('driver.logistics-loads.update-status', $job) }}" method="POST">
                                                                         @csrf
                                                                         @method('PATCH')
                                                                         <input type="hidden" name="status" value="completed">
@@ -186,10 +186,10 @@
                                             
                                             @if(Auth::user()->user_type === 'admin' || Auth::user()->user_type === 'company')
                                                 @if(Auth::user()->user_type === 'admin')
-                                                    <a href="{{ route('admin.logistics-jobs.edit', $job) }}" class="btn btn-sm btn-outline-warning">
+                                                    <a href="{{ route('admin.logistics-loads.edit', $job) }}" class="btn btn-sm btn-outline-warning">
                                                         <i class="bi bi-pencil"></i>
                                                     </a>
-                                                    <form action="{{ route('admin.logistics-jobs.destroy', $job) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this job?')">
+                                                    <form action="{{ route('admin.logistics-loads.destroy', $job) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this job?')">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-sm btn-outline-danger">
@@ -197,10 +197,10 @@
                                                         </button>
                                                     </form>
                                                 @elseif(Auth::user()->user_type === 'company')
-                                                    <a href="{{ route('company.logistics-jobs.edit', $job) }}" class="btn btn-sm btn-outline-warning">
+                                                    <a href="{{ route('company.logistics-loads.edit', $job) }}" class="btn btn-sm btn-outline-warning">
                                                         <i class="bi bi-pencil"></i>
                                                     </a>
-                                                    <form action="{{ route('company.logistics-jobs.destroy', $job) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this job?')">
+                                                    <form action="{{ route('company.logistics-loads.destroy', $job) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this job?')">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-sm btn-outline-danger">
@@ -232,7 +232,7 @@
                             @endif
                         </p>
                         @if(Auth::user()->user_type === 'driver')
-                            <a href="{{ route('driver.logistics-jobs.create') }}" class="btn btn-primary">
+                            <a href="{{ route('driver.logistics-loads.create') }}" class="btn btn-primary">
                                 <i class="bi bi-plus-circle"></i>
                                 Create First Job
                             </a>

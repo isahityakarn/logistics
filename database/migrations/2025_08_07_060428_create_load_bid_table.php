@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('load_bid', function (Blueprint $table) {
             $table->id();
             $table->foreignId('logisticjob_id')->constrained('logistics_load')->onDelete('cascade');
-            $table->foreignId('company_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('driver_id')->constrained('users')->onDelete('cascade');
             $table->decimal('price', 10, 2);
             $table->enum('status', [
                 'pending', 
@@ -35,6 +35,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('load_bid');
+        Schema::enableForeignKeyConstraints();
     }
 };

@@ -17,13 +17,13 @@ class LogisticsLoadController extends Controller
         
         if ($user->user_type === 'admin') {
             $jobs = LogisticsLoad::with('driver')->latest();
-        } elseif ($user->user_type === 'company') {
-            $jobs = LogisticsLoad::with('driver')->latest();
+        } elseif ($user->user_type === 'driver') {
+            $jobs = LogisticsLoad::with('company')->latest();
         } 
         
-        elseif ($user->user_type === 'driver') {
+        elseif ($user->user_type === 'company') {
             // dd(Auth::user()->id);
-            $jobs = LogisticsLoad::with('driver')->where("driver_id", Auth::user()->id);
+            $jobs = LogisticsLoad::with('company')->where("company_id", Auth::user()->id);
             
             if ($request->has('status') && $request->has('driver')) {
                 if ($request->status === 'assigned') {
