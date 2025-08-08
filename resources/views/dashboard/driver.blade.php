@@ -2,40 +2,13 @@
 
 @section('title', 'Driver Dashboard')
 @section('page-title', 'Driver Dashboard')
-
+    
 @section('content')
     <div class="row mb-4">
-                                         <div class="d-grid gap-2">
-                        <a href="{{ route('driver.logistics-loads.index') }}" class="btn btn-outline-primary">
-                            <i class="bi bi-search"></i>
-                            Available Loads
-                        </a>
-                        <a href="{{ route('driver.logistics-loads.index') }}?status=assigned&driver={{ Auth::id() }}"
-                            class="btn btn-outline-success">
-                            <i class="bi bi-list-check"></i>
-                            My Assigned Loads
-                        </a>
-                        <a href="{{ route('driver.logistics-loads.index') }}?status=completed&driver={{ Auth::id() }}"
-                            class="btn btn-outline-warning">
-                            <i class="bi bi-clock-history"></i>
-                            Load History
-                        </a>
-                    </div>"d-grid gap-2">
-                        <a href="{{ route('driver.logistics-loads.index') }}" class="btn btn-outline-primary">
-                            <i class="bi bi-search"></i>
-                            Available Loads
-                        </a>
-                        <a href="{{ route('driver.logistics-loads.index') }}?status=assigned&driver={{ Auth::id() }}"
-                            class="btn btn-outline-success">
-                            <i class="bi bi-list-check"></i>
-                            My Assigned Loads
-                        </a>
-                        <a href="{{ route('driver.logistics-loads.index') }}?status=completed&driver={{ Auth::id() }}"
-                            class="btn btn-outline-warning">
-                            <i class="bi bi-clock-history"></i>
-                            Load History
-                        </a>
-                    </div>l-md-3 mb-3">
+    
+
+
+        <div class="col-md-3 mb-3">
             <div class="card card-shadow border-0 h-100">
                 <div class="card-body text-center">
                     <i class="bi bi-list-check text-primary" style="font-size: 2rem;"></i>
@@ -72,7 +45,7 @@
             </div>
         </div>
     </div>
-  
+
 
     <div class="row">
         <div class="col-lg-8 mb-4">
@@ -103,7 +76,8 @@
                                             <td><strong>#{{ $job->id }}</strong></td>
                                             <td>
                                                 <strong>{{ $job->pickup_location }}</strong><br>
-                                                <small class="text-muted">{{ Str::limit($job->pickup_address, 25) }}</small>
+                                                <small
+                                                    class="text-muted">{{ Str::limit($job->pickup_address, 25) }}</small>
                                             </td>
                                             <td>
                                                 <strong>{{ $job->delivery_contact }}</strong><br>

@@ -75,12 +75,12 @@
              </li>
       
           
-             <li class="nav-item">
+             {{-- <li class="nav-item">
                  <a class="nav-link" href="#">
                      <i class="bi bi-clock-history"></i>
                      Job History
                  </a>
-             </li>
+             </li> --}}
          @endif
 
          <li class="nav-item">

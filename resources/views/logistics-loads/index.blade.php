@@ -1,17 +1,17 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Logistics Jobs')
-@section('page-title', 'Logistics Jobs Management')
+@section('title', 'Logistics Loads')
+@section('page-title', 'Logistics Loads Management')
 
 @section('content')
 <div class="row mb-4">
     <div class="col-12">
         <div class="d-flex justify-content-between align-items-center">
-            <h4>All Logistics Jobs</h4>
+            <h4>All Logistics Loads</h4>
             @if(Auth::user()->user_type === 'driver')
                 <a href="{{ route('driver.logistics-loads.create') }}" class="btn btn-primary">
                     <i class="bi bi-plus-circle"></i>
-                    Create New Job
+                    Create New Load
                 </a>
             @endif
         </div>
@@ -38,7 +38,7 @@
             <div class="card-header gradient-bg text-white">
                 <h5 class="mb-0">
                     <i class="bi bi-list-ul"></i>
-                    Jobs List
+                    Loads List
                 </h5>
             </div>
             <div class="card-body">
@@ -110,7 +110,7 @@
                                                 @if($job->status === 'pending' && !$job->driver_id)
                                                     <form action="{{ route('driver.logistics-loads.accept', $job) }}" method="POST" style="display: inline;">
                                                         @csrf
-                                                        <button type="submit" class="btn btn-sm btn-success" onclick="return confirm('Are you sure you want to accept this job?')">
+                                                        <button type="submit" class="btn btn-sm btn-success" onclick="return confirm('Are you sure you want to accept this load?')">>
                                                             <i class="bi bi-check-circle"></i>
                                                         </button>
                                                     </form>
@@ -130,7 +130,7 @@
                                                                         @method('PATCH')
                                                                         <input type="hidden" name="status" value="in_progress">
                                                                         <button type="submit" class="dropdown-item">
-                                                                            <i class="bi bi-play-circle"></i> Start Job
+                                                                            <i class="bi bi-play-circle"></i> Start Load
                                                                         </button>
                                                                     </form>
                                                                 </li>
@@ -174,7 +174,7 @@
                                                                         @method('PATCH')
                                                                         <input type="hidden" name="status" value="completed">
                                                                         <button type="submit" class="dropdown-item">
-                                                                            <i class="bi bi-check-circle-fill"></i> Complete Job
+                                                                            <i class="bi bi-check-circle-fill"></i> Complete Load
                                                                         </button>
                                                                     </form>
                                                                 </li>
@@ -189,7 +189,7 @@
                                                     <a href="{{ route('admin.logistics-loads.edit', $job) }}" class="btn btn-sm btn-outline-warning">
                                                         <i class="bi bi-pencil"></i>
                                                     </a>
-                                                    <form action="{{ route('admin.logistics-loads.destroy', $job) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this job?')">
+                                                    <form action="{{ route('admin.logistics-loads.destroy', $job) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this load?')">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-sm btn-outline-danger">
@@ -200,7 +200,7 @@
                                                     <a href="{{ route('company.logistics-loads.edit', $job) }}" class="btn btn-sm btn-outline-warning">
                                                         <i class="bi bi-pencil"></i>
                                                     </a>
-                                                    <form action="{{ route('company.logistics-loads.destroy', $job) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this job?')">
+                                                    <form action="{{ route('company.logistics-loads.destroy', $job) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this load?')">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-sm btn-outline-danger">
@@ -218,23 +218,23 @@
                     </div>
                     
                     <div class="d-flex justify-content-center mt-4">
-                        {{ $jobs->links() }}
+                        {{ $jobs->links('pagination.custom') }}
                     </div>
                 @else
                     <div class="text-center py-5">
                         <i class="bi bi-inbox text-muted" style="font-size: 3rem;"></i>
-                        <h5 class="text-muted mt-3">No logistics jobs found</h5>
+                        <h5 class="text-muted mt-3">No logistics loads found</h5>
                         <p class="text-muted">
                             @if(Auth::user()->user_type === 'driver')
-                                Start by creating your first logistics job.
+                                Start by creating your first logistics load.
                             @else
-                                No jobs are currently available for you.
+                                No loads are currently available for you.
                             @endif
                         </p>
                         @if(Auth::user()->user_type === 'driver')
                             <a href="{{ route('driver.logistics-loads.create') }}" class="btn btn-primary">
                                 <i class="bi bi-plus-circle"></i>
-                                Create First Job
+                                Create First Load
                             </a>
                         @endif
                     </div>
