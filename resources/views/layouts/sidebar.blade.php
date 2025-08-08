@@ -16,8 +16,8 @@
                  </a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link {{ request()->routeIs('admin.logistics-loads.*') ? 'active' : '' }}"
-                     href="{{ route('admin.logistics-loads.index') }}">
+                 <a class="nav-link {{ request()->routeIs('admin.logistics-load.*') ? 'active' : '' }}"
+                     href="{{ route('admin.logistics-load.index') }}">
                      <i class="bi bi-truck"></i>
                      Logistics Loads
                  </a>
@@ -51,8 +51,8 @@
                  </a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link {{ request()->routeIs('company.logistics-loads.*') ? 'active' : '' }}"
-                     href="{{ route('company.logistics-loads.index') }}">
+                 <a class="nav-link {{ request()->routeIs('company.logistics-load.*') ? 'active' : '' }}"
+                     href="{{ route('company.logistics-load.index') }}">
                      <i class="bi bi-box-seam"></i>
                       Loads
                  </a>
@@ -67,8 +67,8 @@
                  </a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link {{ request()->routeIs('driver.logistics-loads.*') ? 'active' : '' }}"
-                     href="{{ route('driver.logistics-loads.index') }}">
+                 <a class="nav-link {{ request()->routeIs('driver.logistics-load.*') ? 'active' : '' }}"
+                     href="{{ route('driver.logistics-load.index') }}">
                      <i class="bi bi-search"></i>
                       Loads
                  </a>
