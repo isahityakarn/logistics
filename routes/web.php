@@ -33,49 +33,19 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/companies', [DashboardController::class, 'listCompanies'])->name('admin.companies');
     
     // Logistics Load Routes for Admin
-    Route::resource('logistics-load', LogisticsLoadController::class)->names([
-        'index' => 'admin.logistics-load.index',
-        'create' => 'admin.logistics-load.create',
-        'store' => 'admin.logistics-load.store',
-        'show' => 'admin.logistics-load.show',
-        'edit' => 'admin.logistics-load.edit',
-        'update' => 'admin.logistics-load.update',
-        'destroy' => 'admin.logistics-load.destroy'
-    ]);
-    Route::post('/logistics-load/{logisticsLoad}/assign-driver', [LogisticsLoadController::class, 'assignDriver'])->name('admin.logistics-load.assign-driver');
-    Route::patch('/logistics-load/{logisticsLoad}/update-status', [LogisticsLoadController::class, 'updateStatus'])->name('admin.logistics-load.update-status');
+  
 });
 
 // Company Routes
 Route::prefix('company')->middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'companyDashboard'])->name('company.dashboard');
-    
-    // Logistics Load Routes for Company
-    Route::resource('logistics-load', LogisticsLoadController::class)->names([
-        'index' => 'company.logistics-load.index',
-        'create' => 'company.logistics-load.create',
-        'store' => 'company.logistics-load.store',
-        'show' => 'company.logistics-load.show',
-        'edit' => 'company.logistics-load.edit',
-        'update' => 'company.logistics-load.update',
-        'destroy' => 'company.logistics-load.destroy'
-    ]);
-    Route::patch('/logistics-load/{logisticsLoad}/update-status', [LogisticsLoadController::class, 'updateStatus'])->name('company.logistics-load.update-status');
+  
 });
 
 // Driver Routes
 Route::prefix('driver')->middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'driverDashboard'])->name('driver.dashboard');
     
-    // Logistics Load Routes for Driver (read-only mostly)
-    Route::resource('logistics-load', LogisticsLoadController::class)->names([
-        'index' => 'driver.logistics-load.index',
-        'show' => 'driver.logistics-load.show'
-    ])->only(['index', 'show']);
-    Route::patch('/logistics-load/{logisticsLoad}/update-status', [LogisticsLoadController::class, 'updateStatus'])->name('driver.logistics-load.update-status');
+
 });
 
-// Load Bids Routes (for Admin and Company users)
-Route::middleware('auth')->group(function () {
-    Route::resource('load-bids', LoadBidController::class);
-});

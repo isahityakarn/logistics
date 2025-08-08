@@ -104,7 +104,7 @@
                             </table>
                         </div>
                         <div class="text-center mt-3">
-                            <a href="{{ route('driver.logistics-load.index') }}" class="btn btn-outline-primary">
+                            <a href="" class="btn btn-outline-primary">
                                 <i class="bi bi-list-ul"></i>
                                 View All Available Loads
                             </a>
@@ -114,7 +114,7 @@
                             <i class="bi bi-search text-muted" style="font-size: 3rem;"></i>
                             <h5 class="text-muted mt-3">No loads available</h5>
                             <p class="text-muted">Check back later for new delivery opportunities.</p>
-                            <a href="{{ route('driver.logistics-load.index') }}" class="btn btn-primary">
+                            <a href="" class="btn btn-primary">
                                 <i class="bi bi-arrow-clockwise"></i>
                                 Refresh Loads
                             </a>
@@ -169,16 +169,16 @@
                 </div>
                 <div class="card-body">
                     <div class="d-grid gap-2">
-                        <a href="{{ route('driver.logistics-load.index') }}" class="btn btn-outline-primary">
+                        <a href="" class="btn btn-outline-primary">
                             <i class="bi bi-search"></i>
                             Available Loads
                         </a>
-                        <a href="{{ route('driver.logistics-load.index') }}?status=assigned&driver={{ Auth::id() }}"
+                        <a href=""
                             class="btn btn-outline-success">
                             <i class="bi bi-list-check"></i>
                             My Assigned Loads
                         </a>
-                        <a href="{{ route('driver.logistics-load.index') }}?status=completed&driver={{ Auth::id() }}"
+                        <a href=""
                             class="btn btn-outline-warning">
                             <i class="bi bi-clock-history"></i>
                             Load History
