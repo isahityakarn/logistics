@@ -58,8 +58,13 @@ class DashboardController extends Controller
         
         // Get recent jobs (all jobs for now since company_id doesn't exist)
         // $recentJobs = LogisticsLoad::latest()->take(5)->get();
+         return view('dashboard.company', compact(
+            'totalJobs',
+            'pendingJobs', 
+            'inTransitJobs',
+            'completedJobs'
+        ));
         
-        return view('dashboard.company');
     }
 
     public function driverDashboard()
