@@ -57,31 +57,19 @@ class DashboardController extends Controller
         $completedJobs = 55;
         
         // Get recent jobs (all jobs for now since company_id doesn't exist)
-        $recentJobs = LogisticsLoad::latest()->take(5)->get();
+        // $recentJobs = LogisticsLoad::latest()->take(5)->get();
         
-        return view('dashboard.company', compact(
-            'totalJobs',
-            'pendingJobs',
-            'inTransitJobs',
-            'completedJobs',
-            'recentJobs'
-        ));
+        return view('dashboard.company');
     }
 
     public function driverDashboard()
     {
         $user = Auth::user();
-        $availableJobsCount = LogisticsLoad::where('status', 'pending')->count();
-        $assignedJobsCount = LogisticsLoad::whereIn('status', ['assigned', 'in_progress', 'picked_up', 'in_transit'])
-            ->count();
-        $completedJobsCount = LogisticsLoad::where('status', 'completed')
-            ->count();
+        $availableJobsCount = 100;
+        $assignedJobsCount = 800;
+        $completedJobsCount = 100;
         $totalEarnings = 1000;
-        $availableJobs = LogisticsLoad::with('driver')
-            ->where('status', 'pending')
-            ->latest()
-            ->take(5)
-            ->get();
+        $availableJobs = [];
         
         return view('dashboard.driver', compact(
             'availableJobsCount',

@@ -23,8 +23,6 @@ class DatabaseSeeder extends Seeder
         // Add our custom seeders
         $this->call([
             UsersSeeder::class,
-            LogisticsLoadSeeder::class,
-            LoadBidSeeder::class,
         ]);
     }
 }

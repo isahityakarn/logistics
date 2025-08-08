@@ -228,25 +228,37 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('driver.logistics-load.index', ['status' => 'assigned', 'driver' => 'me']) }}" class="{{ request()->input('status') === 'assigned' ? 'active' : '' }}">
+                        <a href="" class="{{ request()->input('status') === 'assigned' ? 'active' : '' }}">
                             <i class="bi bi-clipboard-check"></i>
                             Assigned Loads
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('driver.logistics-load.index', ['status' => 'completed', 'driver' => 'me']) }}" class="{{ request()->input('status') === 'completed' ? 'active' : '' }}">
+                        <a href="{" class="">
                             <i class="bi bi-check-circle"></i>
                             Completed Loads
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('driver.logistics-load.create') }}" class="{{ request()->routeIs('driver.logistics-load.create') ? 'active' : '' }}">
+                        <a href="" class="">
                             <i class="bi bi-plus-circle"></i>
                             Create Load
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('load-bids.index') }}" class="{{ request()->routeIs('load-bids.*') ? 'active' : '' }}">
+                        <a href="" class="">
+                            <i class="bi bi-check-circle"></i>
+                            Completed Loads
+                        </a>
+                    </li>
+                    <li>
+                         <a href="" class="">
+                            <i class="bi bi-plus-circle"></i>
+                            Create Load
+                        </a>
+                    </li>
+                    <li>
+                          <a href="" class="">
                             <i class="bi bi-currency-dollar"></i>
                             Load Bids
                         </a>

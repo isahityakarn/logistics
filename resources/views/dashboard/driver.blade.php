@@ -57,7 +57,7 @@
                     </h5>
                 </div>
                 <div class="card-body">
-                    @if ($availableJobs->count() > 0)
+                    @if ($availableJobs)
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead>
