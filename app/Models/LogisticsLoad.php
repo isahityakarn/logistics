@@ -204,4 +204,40 @@ class LogisticsLoad extends Model
     {
         return in_array($this->status, ['delivered', 'completed']);
     }
+
+    /**
+     * Get the appropriate Bootstrap badge class for the load status.
+     */
+    public function getStatusBadgeClass()
+    {
+        return match($this->status) {
+            'pending' => 'badge bg-warning text-dark',
+            'assigned' => 'badge bg-info text-white',
+            'in_progress' => 'badge bg-primary text-white',
+            'picked_up' => 'badge bg-secondary text-white',
+            'in_transit' => 'badge bg-primary text-white',
+            'delivered' => 'badge bg-success text-white',
+            'completed' => 'badge bg-success text-white',
+            'cancelled' => 'badge bg-danger text-white',
+            default => 'badge bg-light text-dark',
+        };
+    }
+
+    /**
+     * Get the formatted status text for display.
+     */
+    public function getFormattedStatus()
+    {
+        return match($this->status) {
+            'pending' => 'Pending',
+            'assigned' => 'Assigned',
+            'in_progress' => 'In Progress',
+            'picked_up' => 'Picked Up',
+            'in_transit' => 'In Transit',
+            'delivered' => 'Delivered',
+            'completed' => 'Completed',
+            'cancelled' => 'Cancelled',
+            default => ucfirst($this->status),
+        };
+    }
 }

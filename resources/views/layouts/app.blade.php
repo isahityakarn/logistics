@@ -3,14 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{                    <li>
-                        <a href="{{ route('driver.logistics-loads.index') }}" class="{{ request()->routeIs('driver.logistics-loads.*') ? 'active' : '' }}">
-                            <i class="bi bi-box-seam"></i>
-                            Available Loads
-                        </a>
-                    </li>_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Sahitya Logistic') }} - @yield('title', 'Dashboard')</title>
+    <title>{{ config('app.name', 'Logistic') }} - @yield('title', 'Dashboard')</title>
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -209,7 +204,7 @@
                     <li>
                         <a href="{{ route('load-bids.index') }}" class="{{ request()->routeIs('load-bids.*') ? 'active' : '' }}">
                             <i class="bi bi-currency-dollar"></i>
-                            Job Prices
+                            Load Bids
                         </a>
                     </li>
                 @elseif(auth()->user()->user_type === 'company')
@@ -222,14 +217,14 @@
                     <li>
                         <a href="{{ route('load-bids.index') }}" class="{{ request()->routeIs('load-bids.*') ? 'active' : '' }}">
                             <i class="bi bi-currency-dollar"></i>
-                            Job Prices
+                            Load Bids
                         </a>
                     </li>
                 @elseif(auth()->user()->user_type === 'driver')
                     <li>
                         <a href="{{ route('driver.logistics-loads.index') }}" class="{{ request()->routeIs('driver.logistics-loads.*') ? 'active' : '' }}">
                             <i class="bi bi-box-seam"></i>
-                            Available Jobs
+                            Available Loads
                         </a>
                     </li>
                     <li>
@@ -253,7 +248,7 @@
                     <li>
                         <a href="{{ route('load-bids.index') }}" class="{{ request()->routeIs('load-bids.*') ? 'active' : '' }}">
                             <i class="bi bi-currency-dollar"></i>
-                            Job Prices
+                            Load Bids
                         </a>
                     </li>
                 @endif
