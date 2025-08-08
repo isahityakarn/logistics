@@ -29,7 +29,7 @@
                             @endif
                         </p>
                     </div>
-                    @if (auth()->user()->user_type === 'admin' || auth()->user()->user_type === 'company')
+                    @if (auth()->user()->user_type === 'admin' || auth()->user()->user_type === 'driver')
                         <div>
                             @php
                                 $createRoute = 'load-bids.create';
@@ -218,12 +218,12 @@
                                             <div class="d-flex align-items-center">
                                                 <div class="avatar-circle me-3">
                                                     <span class="avatar-initials">
-                                                        {{ substr($price->company->name, 0, 2) }}
+                                                        {{ substr($price->driver->name, 0, 2) }}
                                                     </span>
                                                 </div>
                                                 <div>
-                                                    <h6 class="mb-0">{{ $price->company->name }}</h6>
-                                                    <small class="text-muted">{{ $price->company->email }}</small>
+                                                    <h6 class="mb-0">{{ $price->driver->name }}</h6>
+                                                    <small class="text-muted">{{ $price->driver->email }}</small>
                                                 </div>
                                             </div>
                                         </td>
@@ -307,9 +307,7 @@
                     <!-- Pagination -->
                     @if ($prices->hasPages())
                         <div class="card-footer bg-light">
-                            <div class="d-flex justify-content-center">
-                                {{ $prices->links() }}
-                            </div>
+                            {{ $prices->links('pagination.card') }}
                         </div>
                     @endif
                 @else

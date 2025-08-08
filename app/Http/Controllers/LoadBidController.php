@@ -18,25 +18,20 @@ class LoadBidController extends Controller
         if ($user->user_type === 'admin') {
             $prices = LoadBid::with(['logisticsJob', 'company'])->latest();
         } elseif ($user->user_type === 'company') {
-            $prices = LoadBid::with(['logisticsJob', 'company'])
-                ->where('driver_id', $user->id)
+            $prices = LoadBid::with(['logisticsJob', 'driver'])
+                // ->where('driver_id', $user->id)
                 ->latest();
         } elseif ($user->user_type === 'driver') {
-            // Drivers can view prices for jobs they are assigned to
-
-            $logisticsJobId = LogisticsLoad::where('company_id', $user->id)->pluck('id');
-            // return $logisticsJobId;
-            $prices = LoadBid::with(['logisticsJob', 'company'])
-            ->whereIn('logisticjob_id', $logisticsJobId)
-                ->whereHas('logisticsJob', function($query) use ($user) {
-                    $query->where('company_id', $user->id);
-                })
+           $prices = LoadBid::with(['logisticsJob', 'driver'])
+           ->where('driver_id', $user->id)
                 ->latest();
         } else {
-            $prices = LoadBid::whereNull('id'); // Empty collection
+            $prices = LoadBid::whereNull('id');
         }
         
         $prices = $prices->paginate(10);
+
+        // return $prices;
         
         return view('load-bids.index', compact('prices'));
     }
@@ -104,7 +99,6 @@ class LoadBidController extends Controller
         }
         
         if ($user->user_type === 'driver') {
-            // Drivers can only view prices for jobs they are assigned to
             if ($loadPrice->logisticsJob->driver_id !== $user->id) {
                 return redirect()->route('load-bids.index')
                     ->with('error', 'You can only view prices for jobs assigned to you.');

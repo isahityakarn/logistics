@@ -70,7 +70,7 @@
                  <a class="nav-link {{ request()->routeIs('driver.logistics-loads.*') ? 'active' : '' }}"
                      href="{{ route('driver.logistics-loads.index') }}">
                      <i class="bi bi-search"></i>
-                     My Loads
+                      Loads
                  </a>
              </li>
       
@@ -86,7 +86,7 @@
          <li class="nav-item">
              <a class="nav-link" href="{{ route('load-bids.index') }}">
                  <i class="bi bi-person"></i>
-                 Job Prices
+                 Bid
              </a>
          </li>
          {{-- <li class="nav-item">
