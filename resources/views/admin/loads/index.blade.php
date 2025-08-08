@@ -81,8 +81,13 @@
                                     </td>
                                     <td>{{ $load->created_at ? $load->created_at->format('M d, Y') : '' }}</td>
                                     <td>
-                                        <a href="{{ route('loads.show', $load) }}" class="btn btn-info btn-sm">View</a>
-                                        <a href="{{ route('loads.edit', $load) }}" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="{{ route('loads.show', $load) }}" class="btn btn-info btn-sm" title="View">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="{{ route('loads.edit', $load) }}" class="btn btn-warning btn-sm" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                        <!-- If the icon does not show, ensure FontAwesome 5+ is loaded in your layout. -->
+                                    </a>
                                     </td>
                                 </tr>
                             @empty
