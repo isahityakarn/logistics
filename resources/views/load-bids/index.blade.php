@@ -328,8 +328,8 @@
                                     @php
                                         $createRoute =
                                             auth()->user()->user_type === 'admin'
-                                                ? 'admin.job-prices.create'
-                                                : 'company.job-prices.create';
+                                                ? 'admin.load-bids.create'
+                                                : 'company.load-bids.create';
                                     @endphp
                                     <a href="{{ route($createRoute) }}" class="btn btn-primary btn-lg">
                                         <i class="bi bi-plus-circle me-2"></i>

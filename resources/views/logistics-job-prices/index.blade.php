@@ -32,7 +32,7 @@
                     @if (auth()->user()->user_type === 'admin' || auth()->user()->user_type === 'company')
                         <div>
                             @php
-                                $createRoute = 'logistics-job-prices.create';
+                                $createRoute = 'load-bids.create';
                             @endphp
                             <a href="{{ route($createRoute) }}" class="btn btn-primary btn-lg">
                                 <i class="bi bi-plus-circle me-2"></i>
@@ -262,10 +262,10 @@
                                                 @php
                                                     $showRoute =
                                                         auth()->user()->user_type === 'admin'
-                                                            ? 'logistics-job-prices.show'
+                                                            ? 'load-bids.show'
                                                             : (auth()->user()->user_type === 'company'
-                                                                ? 'logistics-job-prices.show'
-                                                                : 'logistics-job-prices.show');
+                                                                ? 'load-bids.show'
+                                                                : 'load-bids.show');
                                                 @endphp
                                                 <a href="{{ route($showRoute, $price) }}"
                                                     class="btn btn-outline-info btn-sm" data-bs-toggle="tooltip"
@@ -276,8 +276,8 @@
                                                 @if (auth()->user()->user_type === 'admin' ||
                                                         (auth()->user()->user_type === 'company' && $price->company_id === auth()->id()))
                                                     @php
-                                                        $editRoute = 'logistics-job-prices.edit';
-                                                        $destroyRoute = 'logistics-job-prices.destroy';
+                                                        $editRoute = 'load-bids.edit';
+                                                        $destroyRoute = 'load-bids.destroy';
                                                     @endphp
                                                     <a href="{{ route($editRoute, $price) }}"
                                                         class="btn btn-outline-warning btn-sm" data-bs-toggle="tooltip"
@@ -328,8 +328,8 @@
                                     @php
                                         $createRoute =
                                             auth()->user()->user_type === 'admin'
-                                                ? 'admin.job-prices.create'
-                                                : 'company.job-prices.create';
+                                                ? 'admin.load-bids.create'
+                                                : 'company.load-bids.create';
                                     @endphp
                                     <a href="{{ route($createRoute) }}" class="btn btn-primary btn-lg">
                                         <i class="bi bi-plus-circle me-2"></i>

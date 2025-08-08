@@ -84,7 +84,7 @@
          @endif
 
          <li class="nav-item">
-             <a class="nav-link" href="{{ route('logistics-job-prices.index') }}">
+             <a class="nav-link" href="{{ route('load-bids.index') }}">
                  <i class="bi bi-person"></i>
                  Job Prices
              </a>

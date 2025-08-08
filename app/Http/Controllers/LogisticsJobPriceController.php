@@ -38,7 +38,7 @@ class LogisticsJobPriceController extends Controller
         
         $prices = $prices->paginate(10);
         
-        return view('logistics-job-prices.index', compact('prices'));
+        return view('load-bids.index', compact('prices'));
     }
 
     public function create()
@@ -53,7 +53,7 @@ class LogisticsJobPriceController extends Controller
         $logisticsJobs = LogisticsJob::all();
         $companies = User::where('user_type', 'company')->get();
         
-        return view('logistics-job-prices.create', compact('logisticsJobs', 'companies'));
+        return view('load-bids.create', compact('logisticsJobs', 'companies'));
     }
 
     public function store(Request $request)
@@ -99,19 +99,19 @@ class LogisticsJobPriceController extends Controller
         $user = Auth::user();
         
         if ($user->user_type === 'company' && $logisticsJobPrice->company_id !== $user->id) {
-            return redirect()->route('logistics-job-prices.index')
+            return redirect()->route('load-bids.index')
                 ->with('error', 'You can only view your own job prices.');
         }
         
         if ($user->user_type === 'driver') {
             // Drivers can only view prices for jobs they are assigned to
             if ($logisticsJobPrice->logisticsJob->driver_id !== $user->id) {
-                return redirect()->route('logistics-job-prices.index')
+                return redirect()->route('load-bids.index')
                     ->with('error', 'You can only view prices for jobs assigned to you.');
             }
         }
 
-        return view('logistics-job-prices.show', compact('logisticsJobPrice'));
+        return view('load-bids.show', compact('logisticsJobPrice'));
     }
 
     public function edit(LogisticsJobPrice $logisticsJobPrice)
@@ -119,19 +119,19 @@ class LogisticsJobPriceController extends Controller
         $user = Auth::user();
         
         if (!in_array($user->user_type, ['admin', 'company'])) {
-            return redirect()->route('logistics-job-prices.index')
+            return redirect()->route('load-bids.index')
                 ->with('error', 'Only admin and company users can edit job prices.');
         }
         
         if ($user->user_type === 'company' && $logisticsJobPrice->company_id !== $user->id) {
-            return redirect()->route('logistics-job-prices.index')
+            return redirect()->route('load-bids.index')
                 ->with('error', 'You can only edit your own job prices.');
         }
         
         $logisticsJobs = LogisticsJob::all();
         $companies = User::where('user_type', 'company')->get();
         
-        return view('logistics-job-prices.edit', compact('logisticsJobPrice', 'logisticsJobs', 'companies'));
+        return view('load-bids.edit', compact('logisticsJobPrice', 'logisticsJobs', 'companies'));
     }
 
     public function update(Request $request, LogisticsJobPrice $logisticsJobPrice)
@@ -139,12 +139,12 @@ class LogisticsJobPriceController extends Controller
         $user = Auth::user();
         
         if (!in_array($user->user_type, ['admin', 'company'])) {
-            return redirect()->route('logistics-job-prices.index')
+            return redirect()->route('load-bids.index')
                 ->with('error', 'Only admin and company users can update job prices.');
         }
         
         if ($user->user_type === 'company' && $logisticsJobPrice->company_id !== $user->id) {
-            return redirect()->route('logistics-job-prices.index')
+            return redirect()->route('load-bids.index')
                 ->with('error', 'You can only update your own job prices.');
         }
 
@@ -172,7 +172,7 @@ class LogisticsJobPriceController extends Controller
 
         $logisticsJobPrice->update($data);
 
-        return redirect()->route('logistics-job-prices.index')
+        return redirect()->route('load-bids.index')
             ->with('success', 'Logistics job price updated successfully!');
     }
 
@@ -181,18 +181,18 @@ class LogisticsJobPriceController extends Controller
         $user = Auth::user();
         
         if (!in_array($user->user_type, ['admin', 'company'])) {
-            return redirect()->route('logistics-job-prices.index')
+            return redirect()->route('load-bids.index')
                 ->with('error', 'Only admin and company users can delete job prices.');
         }
         
         if ($user->user_type === 'company' && $logisticsJobPrice->company_id !== $user->id) {
-            return redirect()->route('logistics-job-prices.index')
+            return redirect()->route('load-bids.index')
                 ->with('error', 'You can only delete your own job prices.');
         }
         
         $logisticsJobPrice->delete();
 
-        return redirect()->route('logistics-job-prices.index')
+        return redirect()->route('load-bids.index')
             ->with('success', 'Logistics job price deleted successfully!');
     }
 
@@ -200,10 +200,10 @@ class LogisticsJobPriceController extends Controller
     {
         $user = Auth::user();
         return match($user->user_type) {
-            'admin' => 'admin.job-prices.index',
-            'company' => 'company.job-prices.index',
-            'driver' => 'driver.job-prices.index',
-            default => 'logistics-job-prices.index'
+            'admin' => 'admin.load-bids.index',
+            'company' => 'company.load-bids.index',
+            'driver' => 'driver.load-bids.index',
+            default => 'load-bids.index'
         };
     }
 
@@ -211,9 +211,9 @@ class LogisticsJobPriceController extends Controller
     {
         $user = Auth::user();
         return match($user->user_type) {
-            'admin' => 'admin.job-prices.create',
-            'company' => 'company.job-prices.create',
-            default => 'logistics-job-prices.create'
+            'admin' => 'admin.load-bids.create',
+            'company' => 'company.load-bids.create',
+            default => 'load-bids.create'
         };
     }
 }

@@ -19,17 +19,17 @@ class LoadBidController extends Controller
             $prices = LoadBid::with(['logisticsJob', 'company'])->latest();
         } elseif ($user->user_type === 'company') {
             $prices = LoadBid::with(['logisticsJob', 'company'])
-                ->where('company_id', $user->id)
+                ->where('driver_id', $user->id)
                 ->latest();
         } elseif ($user->user_type === 'driver') {
             // Drivers can view prices for jobs they are assigned to
 
-            $logisticsJobId = LogisticsLoad::where('driver_id', $user->id)->pluck('id');
+            $logisticsJobId = LogisticsLoad::where('company_id', $user->id)->pluck('id');
             // return $logisticsJobId;
             $prices = LoadBid::with(['logisticsJob', 'company'])
             ->whereIn('logisticjob_id', $logisticsJobId)
                 ->whereHas('logisticsJob', function($query) use ($user) {
-                    $query->where('driver_id', $user->id);
+                    $query->where('company_id', $user->id);
                 })
                 ->latest();
         } else {

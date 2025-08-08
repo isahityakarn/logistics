@@ -40,7 +40,7 @@ class LoginController extends Controller
                 case 'driver':
                     // Check if driver specifically wants to go to jobs page
                     if ($request->has('redirect_to_jobs') && $request->redirect_to_jobs === 'true') {
-                        return redirect()->route('driver.logistics-jobs.index');
+                        return redirect()->route('driver.logistics-loads.index');
                     }
                     return redirect()->intended('/driver/dashboard');
                 default:

@@ -13,12 +13,12 @@
                     <div>
                         @if(auth()->user()->user_type === 'admin' || 
                             (auth()->user()->user_type === 'company' && $logisticsJobPrice->company_id === auth()->id()))
-                            <a href="{{ route('logistics-job-prices.edit', $logisticsJobPrice) }}" 
+                            <a href="{{ route('load-bids.edit', $logisticsJobPrice) }}" 
                                class="btn btn-warning btn-sm">
                                 <i class="fas fa-edit"></i> Edit
                             </a>
                         @endif
-                        <a href="{{ route('logistics-job-prices.index') }}" class="btn btn-secondary btn-sm">
+                        <a href="{{ route('load-bids.index') }}" class="btn btn-secondary btn-sm">
                             <i class="fas fa-arrow-left"></i> Back
                         </a>
                     </div>
@@ -160,7 +160,7 @@
                         (auth()->user()->user_type === 'company' && $logisticsJobPrice->company_id === auth()->id()))
                         <div class="mt-4 pt-3 border-top">
                             <div class="d-flex justify-content-end">
-                                <form action="{{ route('logistics-job-prices.destroy', $logisticsJobPrice) }}" 
+                                <form action="{{ route('load-bids.destroy', $logisticsJobPrice) }}" 
                                       method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')

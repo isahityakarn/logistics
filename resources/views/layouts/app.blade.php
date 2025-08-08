@@ -207,7 +207,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('logistics-job-prices.index') }}" class="{{ request()->routeIs('logistics-job-prices.*') ? 'active' : '' }}">
+                        <a href="{{ route('load-bids.index') }}" class="{{ request()->routeIs('load-bids.*') ? 'active' : '' }}">
                             <i class="bi bi-currency-dollar"></i>
                             Job Prices
                         </a>
@@ -220,14 +220,14 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('logistics-job-prices.index') }}" class="{{ request()->routeIs('logistics-job-prices.*') ? 'active' : '' }}">
+                        <a href="{{ route('load-bids.index') }}" class="{{ request()->routeIs('load-bids.*') ? 'active' : '' }}">
                             <i class="bi bi-currency-dollar"></i>
                             Job Prices
                         </a>
                     </li>
                 @elseif(auth()->user()->user_type === 'driver')
                     <li>
-                        <a href="{{ route('driver.logistics-jobs.index') }}" class="{{ request()->routeIs('driver.logistics-jobs.*') ? 'active' : '' }}">
+                        <a href="{{ route('driver.logistics-loads.index') }}" class="{{ request()->routeIs('driver.logistics-loads.*') ? 'active' : '' }}">
                             <i class="bi bi-box-seam"></i>
                             Available Jobs
                         </a>
@@ -251,7 +251,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('logistics-job-prices.index') }}" class="{{ request()->routeIs('logistics-job-prices.*') ? 'active' : '' }}">
+                        <a href="{{ route('load-bids.index') }}" class="{{ request()->routeIs('load-bids.*') ? 'active' : '' }}">
                             <i class="bi bi-currency-dollar"></i>
                             Job Prices
                         </a>

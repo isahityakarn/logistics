@@ -16,25 +16,23 @@ class LogisticsJobController extends Controller
         $user = Auth::user();
         
         if ($user->user_type === 'admin') {
-            $jobs = LogisticsJob::with('driver')->latest();
+            $jobs = LogisticsJob::with('company')->latest();
+        } elseif ($user->user_type === 'driver') {
+            $jobs = LogisticsJob::with('company')->latest();
         } elseif ($user->user_type === 'company') {
-            $jobs = LogisticsJob::with('driver')->latest();
-        } 
-        
-        elseif ($user->user_type === 'driver') {
-            // dd(Auth::user()->id);
-            $jobs = LogisticsJob::with('driver')->where("driver_id", Auth::user()->id);
+            dd(Auth::user()->id);
+            $jobs = LogisticsJob::with('company')->where("company_id", Auth::user()->id);
             
-            if ($request->has('status') && $request->has('driver')) {
+            if ($request->has('status') && $request->has('company')) {
                 if ($request->status === 'assigned') {
-                    $jobs = $jobs->where('driver_id', $user->id)
+                    $jobs = $jobs->where('company_id', $user->id)
                               ->whereIn('status', ['assigned', 'in_progress', 'picked_up', 'in_transit']);
                 } elseif ($request->status === 'completed') {
-                    $jobs = $jobs->where('driver_id', $user->id)->where('status', 'completed');
+                    $jobs = $jobs->where('company_id', $user->id)->where('status', 'completed');
                 }
             } else {
                 $jobs = $jobs->where(function($query) use ($user) {
-                    $query->where('driver_id', $user->id)
+                    $query->where('company_id', $user->id)
                           ->orWhere('status', 'pending');
                 });
             }
@@ -46,13 +44,13 @@ class LogisticsJobController extends Controller
         
         $jobs = $jobs->paginate(10);
         
-        return view('logistics-jobs.index', compact('jobs'));
+        return view('logistics-loads.index', compact('jobs'));
     }
 
     public function create()
     {
         $drivers = User::where('user_type', 'driver')->get();
-        return view('logistics-jobs.create', compact('drivers'));
+        return view('logistics-loads.create', compact('drivers'));
     }
 
     public function store(Request $request)
@@ -124,13 +122,13 @@ class LogisticsJobController extends Controller
 
         $job = LogisticsJob::create($data);
 
-        $redirectRoute = 'logistics-jobs.index';
+        $redirectRoute = 'logistics-loads.index';
         if (Auth::user()->user_type === 'driver') {
-            $redirectRoute = 'driver.logistics-jobs.index';
+            $redirectRoute = 'driver.logistics-loads.index';
         } elseif (Auth::user()->user_type === 'company') {
-            $redirectRoute = 'company.logistics-jobs.index';
+            $redirectRoute = 'company.logistics-loads.index';
         } elseif (Auth::user()->user_type === 'admin') {
-            $redirectRoute = 'admin.logistics-jobs.index';
+            $redirectRoute = 'admin.logistics-loads.index';
         }
 
         return redirect()->route($redirectRoute)
@@ -146,7 +144,7 @@ class LogisticsJobController extends Controller
             }
         }
 
-        return view('logistics-jobs.show', compact('logisticsJob'));
+        return view('logistics-loads.show', compact('logisticsJob'));
     }
 
     public function edit(LogisticsJob $logisticsJob)
@@ -159,7 +157,7 @@ class LogisticsJobController extends Controller
         }
 
         $drivers = User::where('user_type', 'driver')->get();
-        return view('logistics-jobs.edit', compact('logisticsJob', 'drivers'));
+        return view('logistics-loads.edit', compact('logisticsJob', 'drivers'));
     }
 
     public function update(Request $request, LogisticsJob $logisticsJob)
@@ -238,13 +236,13 @@ class LogisticsJobController extends Controller
 
         $logisticsJob->update($data);
 
-        $redirectRoute = 'logistics-jobs.index';
+        $redirectRoute = 'logistics-loads.index';
         if (Auth::user()->user_type === 'driver') {
-            $redirectRoute = 'driver.logistics-jobs.index';
+            $redirectRoute = 'driver.logistics-loads.index';
         } elseif (Auth::user()->user_type === 'company') {
-            $redirectRoute = 'company.logistics-jobs.index';
+            $redirectRoute = 'company.logistics-loads.index';
         } elseif (Auth::user()->user_type === 'admin') {
-            $redirectRoute = 'admin.logistics-jobs.index';
+            $redirectRoute = 'admin.logistics-loads.index';
         }
 
         return redirect()->route($redirectRoute)
@@ -259,7 +257,7 @@ class LogisticsJobController extends Controller
         
         $logisticsJob->delete();
 
-        return redirect()->route('logistics-jobs.index')
+        return redirect()->route('logistics-loads.index')
             ->with('success', 'Logistics job deleted successfully!');
     }
 

@@ -5,7 +5,22 @@
 
 @section('content')
     <div class="row mb-4">
-                          <div class="d-grid gap-2">
+                                         <div class="d-grid gap-2">
+                        <a href="{{ route('driver.logistics-loads.index') }}" class="btn btn-outline-primary">
+                            <i class="bi bi-search"></i>
+                            Available Loads
+                        </a>
+                        <a href="{{ route('driver.logistics-loads.index') }}?status=assigned&driver={{ Auth::id() }}"
+                            class="btn btn-outline-success">
+                            <i class="bi bi-list-check"></i>
+                            My Assigned Loads
+                        </a>
+                        <a href="{{ route('driver.logistics-loads.index') }}?status=completed&driver={{ Auth::id() }}"
+                            class="btn btn-outline-warning">
+                            <i class="bi bi-clock-history"></i>
+                            Load History
+                        </a>
+                    </div>"d-grid gap-2">
                         <a href="{{ route('driver.logistics-loads.index') }}" class="btn btn-outline-primary">
                             <i class="bi bi-search"></i>
                             Available Loads
@@ -24,7 +39,7 @@
             <div class="card card-shadow border-0 h-100">
                 <div class="card-body text-center">
                     <i class="bi bi-list-check text-primary" style="font-size: 2rem;"></i>
-                    <h5 class="card-title mt-3">Available Jobs</h5>
+                    <h5 class="card-title mt-3">Available Loads</h5>
                     <h2 class="text-primary">{{ $availableJobsCount }}</h2>
                 </div>
             </div>
@@ -33,7 +48,7 @@
             <div class="card card-shadow border-0 h-100">
                 <div class="card-body text-center">
                     <i class="bi bi-person-check text-info" style="font-size: 2rem;"></i>
-                    <h5 class="card-title mt-3">My Assigned Jobs</h5>
+                    <h5 class="card-title mt-3">My Assigned Loads</h5>
                     <h2 class="text-info">{{ $assignedJobsCount }}</h2>
                 </div>
             </div>
@@ -42,7 +57,7 @@
             <div class="card card-shadow border-0 h-100">
                 <div class="card-body text-center">
                     <i class="bi bi-check-circle text-success" style="font-size: 2rem;"></i>
-                    <h5 class="card-title mt-3">Completed Jobs</h5>
+                    <h5 class="card-title mt-3">Completed Loads</h5>
                     <h2 class="text-success">{{ $completedJobsCount }}</h2>
                 </div>
             </div>
@@ -65,7 +80,7 @@
                 <div class="card-header gradient-bg text-white">
                     <h5 class="mb-0">
                         <i class="bi bi-list-ul"></i>
-                        Available Jobs
+                        Available Loads
                     </h5>
                 </div>
                 <div class="card-body">
@@ -180,19 +195,19 @@
                 </div>
                 <div class="card-body">
                     <div class="d-grid gap-2">
-                        <a href="{{ route('driver.logistics-jobs.index') }}" class="btn btn-outline-primary">
+                        <a href="{{ route('driver.logistics-loads.index') }}" class="btn btn-outline-primary">
                             <i class="bi bi-search"></i>
-                            Available Jobs
+                            Available Loads
                         </a>
-                        <a href="{{ route('driver.logistics-jobs.index') }}?status=assigned&driver={{ Auth::id() }}"
+                        <a href="{{ route('driver.logistics-loads.index') }}?status=assigned&driver={{ Auth::id() }}"
                             class="btn btn-outline-success">
                             <i class="bi bi-list-check"></i>
-                            My Assigned Jobs
+                            My Assigned Loads
                         </a>
-                        <a href="{{ route('driver.logistics-jobs.index') }}?status=completed&driver={{ Auth::id() }}"
+                        <a href="{{ route('driver.logistics-loads.index') }}?status=completed&driver={{ Auth::id() }}"
                             class="btn btn-outline-warning">
                             <i class="bi bi-clock-history"></i>
-                            Job History
+                            Load History
                         </a>
                         <button class="btn btn-outline-info">
                             <i class="bi bi-chat-dots"></i>

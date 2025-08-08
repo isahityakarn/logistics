@@ -7,7 +7,7 @@
 - [Admin Routes](#admin-routes)
 - [Company Routes](#company-routes)
 - [Driver Routes](#driver-routes)
-- [Logistics Job Prices Routes](#logistics-job-prices-routes)
+- [Logistics Job Prices Routes](#load-bids-routes)
 - [Route Middleware](#route-middleware)
 - [API Examples](#api-examples)
 
@@ -98,19 +98,19 @@ return redirect()->route('dashboard');
 ### Admin Logistics Jobs
 | Method | URI | Name | Controller | Description |
 |--------|-----|------|------------|-------------|
-| GET | `/admin/logistics-jobs` | `admin.logistics-jobs.index` | `LogisticsJobController@index` | List all logistics jobs |
-| GET | `/admin/logistics-jobs/{id}` | `admin.logistics-jobs.show` | `LogisticsJobController@show` | View specific job details |
-| GET | `/admin/logistics-jobs/{id}/edit` | `admin.logistics-jobs.edit` | `LogisticsJobController@edit` | Edit job form |
-| PUT/PATCH | `/admin/logistics-jobs/{id}` | `admin.logistics-jobs.update` | `LogisticsJobController@update` | Update job |
-| DELETE | `/admin/logistics-jobs/{id}` | `admin.logistics-jobs.destroy` | `LogisticsJobController@destroy` | Delete job |
-| POST | `/admin/logistics-jobs/{id}/assign` | `admin.logistics-jobs.assign` | `LogisticsJobController@assign` | Assign job to driver |
-| PATCH | `/admin/logistics-jobs/{id}/status` | `admin.logistics-jobs.update-status` | `LogisticsJobController@updateStatus` | Update job status |
+| GET | `/admin/logistics-loads` | `admin.logistics-loads.index` | `LogisticsJobController@index` | List all logistics jobs |
+| GET | `/admin/logistics-loads/{id}` | `admin.logistics-loads.show` | `LogisticsJobController@show` | View specific job details |
+| GET | `/admin/logistics-loads/{id}/edit` | `admin.logistics-loads.edit` | `LogisticsJobController@edit` | Edit job form |
+| PUT/PATCH | `/admin/logistics-loads/{id}` | `admin.logistics-loads.update` | `LogisticsJobController@update` | Update job |
+| DELETE | `/admin/logistics-loads/{id}` | `admin.logistics-loads.destroy` | `LogisticsJobController@destroy` | Delete job |
+| POST | `/admin/logistics-loads/{id}/assign` | `admin.logistics-loads.assign` | `LogisticsJobController@assign` | Assign job to driver |
+| PATCH | `/admin/logistics-loads/{id}/status` | `admin.logistics-loads.update-status` | `LogisticsJobController@updateStatus` | Update job status |
 
 **Example Usage:**
 ```php
 // Admin job management
-return redirect()->route('admin.logistics-jobs.index');
-return redirect()->route('admin.logistics-jobs.show', $job->id);
+return redirect()->route('admin.logistics-loads.index');
+return redirect()->route('admin.logistics-loads.show', $job->id);
 
 // Admin user management
 $driversUrl = route('admin.drivers');
@@ -132,18 +132,18 @@ $companiesUrl = route('admin.companies');
 ### Company Logistics Jobs
 | Method | URI | Name | Controller | Description |
 |--------|-----|------|------------|-------------|
-| GET | `/company/logistics-jobs` | `company.logistics-jobs.index` | `LogisticsJobController@index` | List company's jobs |
-| GET | `/company/logistics-jobs/{id}` | `company.logistics-jobs.show` | `LogisticsJobController@show` | View job details |
-| GET | `/company/logistics-jobs/{id}/edit` | `company.logistics-jobs.edit` | `LogisticsJobController@edit` | Edit job form |
-| PUT/PATCH | `/company/logistics-jobs/{id}` | `company.logistics-jobs.update` | `LogisticsJobController@update` | Update job |
-| DELETE | `/company/logistics-jobs/{id}` | `company.logistics-jobs.destroy` | `LogisticsJobController@destroy` | Delete job |
-| POST | `/company/logistics-jobs/{id}/assign` | `company.logistics-jobs.assign` | `LogisticsJobController@assign` | Assign job to driver |
-| PATCH | `/company/logistics-jobs/{id}/status` | `company.logistics-jobs.update-status` | `LogisticsJobController@updateStatus` | Update job status |
+| GET | `/company/logistics-loads` | `company.logistics-loads.index` | `LogisticsJobController@index` | List company's jobs |
+| GET | `/company/logistics-loads/{id}` | `company.logistics-loads.show` | `LogisticsJobController@show` | View job details |
+| GET | `/company/logistics-loads/{id}/edit` | `company.logistics-loads.edit` | `LogisticsJobController@edit` | Edit job form |
+| PUT/PATCH | `/company/logistics-loads/{id}` | `company.logistics-loads.update` | `LogisticsJobController@update` | Update job |
+| DELETE | `/company/logistics-loads/{id}` | `company.logistics-loads.destroy` | `LogisticsJobController@destroy` | Delete job |
+| POST | `/company/logistics-loads/{id}/assign` | `company.logistics-loads.assign` | `LogisticsJobController@assign` | Assign job to driver |
+| PATCH | `/company/logistics-loads/{id}/status` | `company.logistics-loads.update-status` | `LogisticsJobController@updateStatus` | Update job status |
 
 **Example Usage:**
 ```php
 // Company job management
-return redirect()->route('company.logistics-jobs.index');
+return redirect()->route('company.logistics-loads.index');
 return redirect()->route('company.dashboard');
 ```
 
@@ -162,31 +162,31 @@ return redirect()->route('company.dashboard');
 ### Driver Logistics Jobs
 | Method | URI | Name | Controller | Description |
 |--------|-----|------|------------|-------------|
-| GET | `/driver/logistics-jobs` | `driver.logistics-jobs.index` | `LogisticsJobController@index` | List available/assigned jobs |
-| GET | `/driver/logistics-jobs/create` | `driver.logistics-jobs.create` | `LogisticsJobController@create` | Create new job form |
-| POST | `/driver/logistics-jobs` | `driver.logistics-jobs.store` | `LogisticsJobController@store` | Store new job |
-| GET | `/driver/logistics-jobs/{id}` | `driver.logistics-jobs.show` | `LogisticsJobController@show` | View job details |
-| GET | `/driver/logistics-jobs/{id}/edit` | `driver.logistics-jobs.edit` | `LogisticsJobController@edit` | Edit job form |
-| PUT/PATCH | `/driver/logistics-jobs/{id}` | `driver.logistics-jobs.update` | `LogisticsJobController@update` | Update job |
-| POST | `/driver/logistics-jobs/{id}/accept` | `driver.logistics-jobs.accept` | `LogisticsJobController@accept` | Accept pending job |
-| PATCH | `/driver/logistics-jobs/{id}/status` | `driver.logistics-jobs.update-status` | `LogisticsJobController@updateStatus` | Update job status |
+| GET | `/driver/logistics-loads` | `driver.logistics-loads.index` | `LogisticsJobController@index` | List available/assigned jobs |
+| GET | `/driver/logistics-loads/create` | `driver.logistics-loads.create` | `LogisticsJobController@create` | Create new job form |
+| POST | `/driver/logistics-loads` | `driver.logistics-loads.store` | `LogisticsJobController@store` | Store new job |
+| GET | `/driver/logistics-loads/{id}` | `driver.logistics-loads.show` | `LogisticsJobController@show` | View job details |
+| GET | `/driver/logistics-loads/{id}/edit` | `driver.logistics-loads.edit` | `LogisticsJobController@edit` | Edit job form |
+| PUT/PATCH | `/driver/logistics-loads/{id}` | `driver.logistics-loads.update` | `LogisticsJobController@update` | Update job |
+| POST | `/driver/logistics-loads/{id}/accept` | `driver.logistics-loads.accept` | `LogisticsJobController@accept` | Accept pending job |
+| PATCH | `/driver/logistics-loads/{id}/status` | `driver.logistics-loads.update-status` | `LogisticsJobController@updateStatus` | Update job status |
 
 ### Driver Job Filtering
 The driver routes support query parameters for filtering:
 
-- **Assigned Jobs**: `/driver/logistics-jobs?status=assigned&driver=me`
-- **Completed Jobs**: `/driver/logistics-jobs?status=completed&driver=me`
-- **Available Jobs**: `/driver/logistics-jobs` (default)
+- **Assigned Jobs**: `/driver/logistics-loads?status=assigned&driver=me`
+- **Completed Jobs**: `/driver/logistics-loads?status=completed&driver=me`
+- **Available Jobs**: `/driver/logistics-loads` (default)
 
 **Example Usage:**
 ```php
 // Driver job management
-return redirect()->route('driver.logistics-jobs.index');
-return redirect()->route('driver.logistics-jobs.create');
+return redirect()->route('driver.logistics-loads.index');
+return redirect()->route('driver.logistics-loads.create');
 
 // Filtered job views
-$assignedJobsUrl = route('driver.logistics-jobs.index', ['status' => 'assigned', 'driver' => 'me']);
-$completedJobsUrl = route('driver.logistics-jobs.index', ['status' => 'completed', 'driver' => 'me']);
+$assignedJobsUrl = route('driver.logistics-loads.index', ['status' => 'assigned', 'driver' => 'me']);
+$completedJobsUrl = route('driver.logistics-loads.index', ['status' => 'completed', 'driver' => 'me']);
 ```
 
 ---
@@ -194,18 +194,18 @@ $completedJobsUrl = route('driver.logistics-jobs.index', ['status' => 'completed
 ## Logistics Job Prices Routes
 
 **Middleware:** `auth` (Admin and Company users only)  
-**Base URI:** `/logistics-job-prices`
+**Base URI:** `/load-bids`
 
 ### Job Prices CRUD
 | Method | URI | Name | Controller | Description |
 |--------|-----|------|------------|-------------|
-| GET | `/logistics-job-prices` | `logistics-job-prices.index` | `LogisticsJobPriceController@index` | List all job prices |
-| GET | `/logistics-job-prices/create` | `logistics-job-prices.create` | `LogisticsJobPriceController@create` | Create price form |
-| POST | `/logistics-job-prices` | `logistics-job-prices.store` | `LogisticsJobPriceController@store` | Store new price |
-| GET | `/logistics-job-prices/{id}` | `logistics-job-prices.show` | `LogisticsJobPriceController@show` | View price details |
-| GET | `/logistics-job-prices/{id}/edit` | `logistics-job-prices.edit` | `LogisticsJobPriceController@edit` | Edit price form |
-| PUT/PATCH | `/logistics-job-prices/{id}` | `logistics-job-prices.update` | `LogisticsJobPriceController@update` | Update price |
-| DELETE | `/logistics-job-prices/{id}` | `logistics-job-prices.destroy` | `LogisticsJobPriceController@destroy` | Delete price |
+| GET | `/load-bids` | `load-bids.index` | `LogisticsJobPriceController@index` | List all job prices |
+| GET | `/load-bids/create` | `load-bids.create` | `LogisticsJobPriceController@create` | Create price form |
+| POST | `/load-bids` | `load-bids.store` | `LogisticsJobPriceController@store` | Store new price |
+| GET | `/load-bids/{id}` | `load-bids.show` | `LogisticsJobPriceController@show` | View price details |
+| GET | `/load-bids/{id}/edit` | `load-bids.edit` | `LogisticsJobPriceController@edit` | Edit price form |
+| PUT/PATCH | `/load-bids/{id}` | `load-bids.update` | `LogisticsJobPriceController@update` | Update price |
+| DELETE | `/load-bids/{id}` | `load-bids.destroy` | `LogisticsJobPriceController@destroy` | Delete price |
 
 **Access Control:**
 - **Admin**: Can view/manage all prices
@@ -215,12 +215,12 @@ $completedJobsUrl = route('driver.logistics-jobs.index', ['status' => 'completed
 **Example Usage:**
 ```php
 // Job prices management
-return redirect()->route('logistics-job-prices.index');
-return redirect()->route('logistics-job-prices.show', $price->id);
+return redirect()->route('load-bids.index');
+return redirect()->route('load-bids.show', $price->id);
 
 // Check if user can access
 @if(auth()->user()->user_type === 'admin' || auth()->user()->user_type === 'company')
-    <a href="{{ route('logistics-job-prices.create') }}">Add Price</a>
+    <a href="{{ route('load-bids.create') }}">Add Price</a>
 @endif
 ```
 
@@ -258,21 +258,21 @@ Routes are organized by user roles with prefixes:
 
 <!-- Role-based links -->
 @if(auth()->user()->user_type === 'admin')
-    <a href="{{ route('admin.logistics-jobs.index') }}">Manage Jobs</a>
+    <a href="{{ route('admin.logistics-loads.index') }}">Manage Jobs</a>
     <a href="{{ route('admin.drivers') }}">View Drivers</a>
 @elseif(auth()->user()->user_type === 'company')
-    <a href="{{ route('company.logistics-jobs.index') }}">My Jobs</a>
+    <a href="{{ route('company.logistics-loads.index') }}">My Jobs</a>
 @elseif(auth()->user()->user_type === 'driver')
-    <a href="{{ route('driver.logistics-jobs.index') }}">Available Jobs</a>
+    <a href="{{ route('driver.logistics-loads.index') }}">Available Jobs</a>
 @endif
 
 <!-- Form actions -->
-<form action="{{ route('logistics-job-prices.store') }}" method="POST">
+<form action="{{ route('load-bids.store') }}" method="POST">
     @csrf
     <!-- form fields -->
 </form>
 
-<form action="{{ route('logistics-job-prices.destroy', $price) }}" method="POST">
+<form action="{{ route('load-bids.destroy', $price) }}" method="POST">
     @csrf
     @method('DELETE')
     <button type="submit">Delete</button>
@@ -284,16 +284,16 @@ Routes are organized by user roles with prefixes:
 ```php
 // Redirects based on user type
 if (Auth::user()->user_type === 'admin') {
-    return redirect()->route('admin.logistics-jobs.index');
+    return redirect()->route('admin.logistics-loads.index');
 } elseif (Auth::user()->user_type === 'company') {
-    return redirect()->route('company.logistics-jobs.index');
+    return redirect()->route('company.logistics-loads.index');
 } else {
-    return redirect()->route('driver.logistics-jobs.index');
+    return redirect()->route('driver.logistics-loads.index');
 }
 
 // URL generation
-$editUrl = route('logistics-job-prices.edit', $price);
-$showUrl = route('admin.logistics-jobs.show', $job);
+$editUrl = route('load-bids.edit', $price);
+$showUrl = route('admin.logistics-loads.show', $job);
 
 // Route checking
 if (request()->routeIs('admin.*')) {
@@ -305,11 +305,11 @@ if (request()->routeIs('admin.*')) {
 
 ```javascript
 // Dynamic route generation
-const jobUrl = `{{ route('admin.logistics-jobs.show', ':id') }}`.replace(':id', jobId);
+const jobUrl = `{{ route('admin.logistics-loads.show', ':id') }}`.replace(':id', jobId);
 
 // Form submission
 const form = document.querySelector('form');
-form.action = `{{ route('logistics-job-prices.update', ':id') }}`.replace(':id', priceId);
+form.action = `{{ route('load-bids.update', ':id') }}`.replace(':id', priceId);
 ```
 
 ---

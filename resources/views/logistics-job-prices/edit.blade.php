@@ -14,7 +14,7 @@
                 </div>
                 
                 <div class="card-body">
-                    <form action="{{ route('logistics-job-prices.update', $logisticsJobPrice) }}" method="POST">
+                    <form action="{{ route('load-bids.update', $logisticsJobPrice) }}" method="POST">
                         @csrf
                         @method('PUT')
                         
@@ -108,7 +108,7 @@
                         </div>
 
                         <div class="d-flex justify-content-between">
-                            <a href="{{ route('logistics-job-prices.index') }}" class="btn btn-secondary">
+                            <a href="{{ route('load-bids.index') }}" class="btn btn-secondary">
                                 <i class="fas fa-arrow-left"></i> Back
                             </a>
                             <button type="submit" class="btn btn-primary">

@@ -27,14 +27,14 @@ class LogisticsLoadController extends Controller
             
             if ($request->has('status') && $request->has('driver')) {
                 if ($request->status === 'assigned') {
-                    $jobs = $jobs->where('driver_id', $user->id)
+                    $jobs = $jobs->where('company_id', $user->id)
                               ->whereIn('status', ['assigned', 'in_progress', 'picked_up', 'in_transit']);
                 } elseif ($request->status === 'completed') {
-                    $jobs = $jobs->where('driver_id', $user->id)->where('status', 'completed');
+                    $jobs = $jobs->where('company_id', $user->id)->where('status', 'completed');
                 }
             } else {
                 $jobs = $jobs->where(function($query) use ($user) {
-                    $query->where('driver_id', $user->id)
+                    $query->where('company_id', $user->id)
                           ->orWhere('status', 'pending');
                 });
             }
