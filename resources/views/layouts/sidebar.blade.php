@@ -10,6 +10,14 @@
                      Admin Panel
                  </a>
              </li>
+
+              <li class="nav-item">
+                 <a class="nav-link {{ request()->routeIs('loads.index') ? 'active' : '' }}"
+                     href="{{ route('loads.index') }}">
+                     <i class="bi bi-shield-check"></i>
+                   Load
+                 </a>
+             </li>
         
      
    

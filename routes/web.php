@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoadBidController;
 use App\Http\Controllers\LogisticsLoadController;
+use App\Http\Controllers\LoadController;
 
 Route::get('/', function () {
     if (Auth::check()) {
@@ -46,6 +47,10 @@ Route::prefix('company')->middleware('auth')->group(function () {
 Route::prefix('driver')->middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'driverDashboard'])->name('driver.dashboard');
     
-
 });
+
+Route::resource('loads', LoadController::class)->middleware('auth');
+    
+
+
 
