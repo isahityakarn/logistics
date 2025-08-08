@@ -8,7 +8,7 @@
     <div class="col-12">
         <div class="d-flex justify-content-between align-items-center">
             <h4>All Logistics Loads</h4>
-            @if(Auth::user()->user_type === 'driver')
+            @if(Auth::user()->user_type === 'company')
                 <a href="{{ route('driver.logistics-loads.create') }}" class="btn btn-primary">
                     <i class="bi bi-plus-circle"></i>
                     Create New Load
