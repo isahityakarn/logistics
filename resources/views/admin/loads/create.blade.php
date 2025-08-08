@@ -278,8 +278,16 @@
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Status</label>
-                                                <input type="text" name="status" class="form-control"
-                                                    value="{{ old('status', 'pending') }}">
+                                                <select name="status" class="form-control">
+                                                    <option value="pending" {{ old('status', 'pending') == 'pending' ? 'selected' : '' }}>Pending</option>
+                                                    <option value="assigned" {{ old('status') == 'assigned' ? 'selected' : '' }}>Assigned</option>
+                                                    <option value="in_progress" {{ old('status') == 'in_progress' ? 'selected' : '' }}>In Progress</option>
+                                                    <option value="picked_up" {{ old('status') == 'picked_up' ? 'selected' : '' }}>Picked Up</option>
+                                                    <option value="in_transit" {{ old('status') == 'in_transit' ? 'selected' : '' }}>In Transit</option>
+                                                    <option value="delivered" {{ old('status') == 'delivered' ? 'selected' : '' }}>Delivered</option>
+                                                    <option value="completed" {{ old('status') == 'completed' ? 'selected' : '' }}>Completed</option>
+                                                    <option value="cancelled" {{ old('status') == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>

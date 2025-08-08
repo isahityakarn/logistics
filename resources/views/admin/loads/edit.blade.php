@@ -12,6 +12,7 @@
                     <h4 class="mb-0"><i class="fas fa-edit"></i> Edit Load</h4>
                 </div>
                 <div class="card-body">
+                    <a href="{{ route('loads.index') }}" class="btn btn-secondary mb-3"><i class="fas fa-arrow-left"></i> Back</a>
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul class="mb-0">
@@ -241,7 +242,16 @@
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Status</label>
-                                                <input type="text" name="status" class="form-control" value="{{ old('status', $load->status ?? 'pending') }}">
+                                                <select name="status" class="form-control">
+                                                    <option value="pending" {{ old('status', $load->status ?? 'pending') == 'pending' ? 'selected' : '' }}>Pending</option>
+                                                    <option value="assigned" {{ old('status', $load->status ?? 'pending') == 'assigned' ? 'selected' : '' }}>Assigned</option>
+                                                    <option value="in_progress" {{ old('status', $load->status ?? 'pending') == 'in_progress' ? 'selected' : '' }}>In Progress</option>
+                                                    <option value="picked_up" {{ old('status', $load->status ?? 'pending') == 'picked_up' ? 'selected' : '' }}>Picked Up</option>
+                                                    <option value="in_transit" {{ old('status', $load->status ?? 'pending') == 'in_transit' ? 'selected' : '' }}>In Transit</option>
+                                                    <option value="delivered" {{ old('status', $load->status ?? 'pending') == 'delivered' ? 'selected' : '' }}>Delivered</option>
+                                                    <option value="completed" {{ old('status', $load->status ?? 'pending') == 'completed' ? 'selected' : '' }}>Completed</option>
+                                                    <option value="cancelled" {{ old('status', $load->status ?? 'pending') == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>

@@ -1,13 +1,14 @@
-<?php
 
+<?php
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\LoadBidController;
-use App\Http\Controllers\LogisticsLoadController;
 use App\Http\Controllers\LoadController;
+use App\Http\Controllers\BidController;
+
+
 
 Route::get('/', function () {
     if (Auth::check()) {
@@ -24,6 +25,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
+
 // Dashboard Routes
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -32,9 +34,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'adminDashboard'])->name('admin.dashboard');
     Route::get('/drivers', [DashboardController::class, 'listDrivers'])->name('admin.drivers');
     Route::get('/companies', [DashboardController::class, 'listCompanies'])->name('admin.companies');
-    
     // Logistics Load Routes for Admin
-  
 });
 
 // Company Routes
@@ -52,5 +52,5 @@ Route::prefix('driver')->middleware('auth')->group(function () {
 Route::resource('loads', LoadController::class)->middleware('auth');
     
 
-
+Route::resource('bids', BidController::class)->middleware('auth');
 
