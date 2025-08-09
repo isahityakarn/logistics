@@ -54,7 +54,7 @@
                         <div class="mb-2" style="font-size:2rem;"><i class="fas fa-building"></i></div>
                         <div>Companies</div>
                         <div class="h3">{{ $companiesCount ?? '-' }}</div>
-                        <small>Click to view all</small>
+                        {{-- <small>Click to view all</small> --}}
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                         <div class="mb-2" style="font-size:2rem;"><i class="fas fa-truck"></i></div>
                         <div>Drivers</div>
                         <div class="h3">{{ $driversCount ?? '-' }}</div>
-                        <small>Click to view all</small>
+                        {{-- <small>Click to view all</small> --}}
                     </div>
                 </div>
             </div>

@@ -33,31 +33,23 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-4 mb-3">
-                                                <label class="form-label">Location <span class="text-danger">*</span></label>
+                                            <div class="col-md-12 mb-3">
+                                                <label class="form-label">Location full Address with country <span class="text-danger">*</span></label>
                                                 <input type="text" name="pickup_location" class="form-control" value="{{ old('pickup_location', $load->pickup_location) }}">
                                             </div>
-                                            <div class="col-md-4 mb-3">
+                                            <div class="col-md-6 mb-3">
                                                 <label class="form-label">Phone <span class="text-danger">*</span></label>
                                                 <input type="text" name="pickup_phone" class="form-control" value="{{ old('pickup_phone', $load->pickup_phone) }}">
                                             </div>
-                                            <div class="col-md-4 mb-3">
+                                            <div class="col-md-6 mb-3">
                                                 <label class="form-label">Company</label>
                                                 <input type="text" name="pickup_company" class="form-control" value="{{ old('pickup_company', $load->pickup_company) }}">
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-6 mb-3">
+                                            <div class="col-md-12 mb-3">
                                                 <label class="form-label">Additional Info</label>
                                                 <textarea name="pickup_additional_info" class="form-control">{{ old('pickup_additional_info', $load->pickup_additional_info) }}</textarea>
-                                            </div>
-                                            <div class="col-md-3 mb-3">
-                                                <label class="form-label">Latitude</label>
-                                                <input type="number" step="any" name="pickup_latitude" class="form-control" value="{{ old('pickup_latitude', $load->pickup_latitude) }}">
-                                            </div>
-                                            <div class="col-md-3 mb-3">
-                                                <label class="form-label">Longitude</label>
-                                                <input type="number" step="any" name="pickup_longitude" class="form-control" value="{{ old('pickup_longitude', $load->pickup_longitude) }}">
                                             </div>
                                         </div>
                                         <div class="row">
@@ -84,31 +76,23 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-4 mb-3">
-                                                <label class="form-label">Location <span class="text-danger">*</span></label>
+                                            <div class="col-md-12 mb-3">
+                                                <label class="form-label">Location Full Address with Country <span class="text-danger">*</span></label>
                                                 <input type="text" name="delivery_location" class="form-control" value="{{ old('delivery_location', $load->delivery_location) }}">
                                             </div>
-                                            <div class="col-md-4 mb-3">
+                                            <div class="col-md-6 mb-3">
                                                 <label class="form-label">Phone <span class="text-danger">*</span></label>
                                                 <input type="text" name="delivery_phone" class="form-control" value="{{ old('delivery_phone', $load->delivery_phone) }}">
                                             </div>
-                                            <div class="col-md-4 mb-3">
+                                            <div class="col-md-6 mb-3">
                                                 <label class="form-label">Company</label>
                                                 <input type="text" name="delivery_company" class="form-control" value="{{ old('delivery_company', $load->delivery_company) }}">
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-6 mb-3">
+                                            <div class="col-md-12 mb-3">
                                                 <label class="form-label">Additional Info</label>
                                                 <textarea name="delivery_additional_info" class="form-control">{{ old('delivery_additional_info', $load->delivery_additional_info) }}</textarea>
-                                            </div>
-                                            <div class="col-md-3 mb-3">
-                                                <label class="form-label">Latitude</label>
-                                                <input type="number" step="any" name="delivery_latitude" class="form-control" value="{{ old('delivery_latitude', $load->delivery_latitude) }}">
-                                            </div>
-                                            <div class="col-md-3 mb-3">
-                                                <label class="form-label">Longitude</label>
-                                                <input type="number" step="any" name="delivery_longitude" class="form-control" value="{{ old('delivery_longitude', $load->delivery_longitude) }}">
                                             </div>
                                         </div>
                                         <div class="row">
@@ -162,7 +146,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-4 mb-3">
+                                            <div class="col-md-3 mb-3">
                                                 <label class="form-label">Packaging</label>
                                                 <select name="packaging" id="packaging_select" class="form-control" onchange="toggleOtherPackaging()">
                                                     <option value="Box" {{ old('packaging', $load->packaging) == 'Box' ? 'selected' : '' }}>Box</option>
@@ -174,17 +158,15 @@
                                                 </select>
                                                 <input type="text" name="packaging_other" id="packaging_other" class="form-control mt-2" placeholder="Please specify" style="display: none;" value="{{ old('packaging_other', $load->packaging_other) }}">
                                             </div>
-                                            <div class="col-md-4 mb-3">
+                                            <div class="col-md-3 mb-3">
                                                 <label class="form-label">No of Items</label>
                                                 <input type="number" name="no_of_items" class="form-control" value="{{ old('no_of_items', $load->no_of_items) }}">
                                             </div>
-                                            <div class="col-md-4 mb-3">
+                                            <div class="col-md-3 mb-3">
                                                 <label class="form-label">Gross Weight</label>
                                                 <input type="number" step="any" name="gross_weight" class="form-control" value="{{ old('gross_weight', $load->gross_weight) }}">
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4 mb-3">
+                                            <div class="col-md-3 mb-3">
                                                 <label class="form-label">Weight Unit</label>
                                                 <select name="weight_unit" id="weight_unit_select" class="form-control" onchange="toggleOtherWeightUnit()">
                                                     <option value="kg" {{ old('weight_unit', $load->weight_unit) == 'kg' ? 'selected' : '' }}>kg</option>
@@ -193,7 +175,10 @@
                                                 </select>
                                                 <input type="text" name="weight_unit_other" id="weight_unit_other" class="form-control mt-2" placeholder="Please specify" style="display: none;" value="{{ old('weight_unit_other', $load->weight_unit_other) }}">
                                             </div>
-                                            <div class="col-md-4 mb-3">
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="col-md-6 mb-3">
                                                 <label class="form-label">Body Type</label>
                                                 <select name="body_type" id="body_type_select" class="form-control" onchange="toggleOtherBodyType()">
                                                     <option value="Flatbed" {{ old('body_type', $load->body_type) == 'Flatbed' ? 'selected' : '' }}>Flatbed</option>
@@ -205,7 +190,7 @@
                                                 </select>
                                                 <input type="text" name="body_type_other" id="body_type_other" class="form-control mt-2" placeholder="Please specify" style="display: none;" value="{{ old('body_type_other', $load->body_type_other) }}">
                                             </div>
-                                            <div class="col-md-4 mb-3">
+                                            <div class="col-md-6 mb-3">
                                                 <label class="form-label">Job Type</label>
                                                 <select name="job_type" id="job_type_select" class="form-control" onchange="toggleOtherJobType()">
                                                     <option value="Hotshot" {{ old('job_type', $load->job_type) == 'Hotshot' ? 'selected' : '' }}>Hotshot</option>
@@ -216,21 +201,19 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-4 mb-3">
+                                            <div class="col-md-3 mb-3">
                                                 <label class="form-label">Length</label>
                                                 <input type="number" step="any" name="length" class="form-control" value="{{ old('length', $load->length) }}">
                                             </div>
-                                            <div class="col-md-4 mb-3">
+                                            <div class="col-md-3 mb-3">
                                                 <label class="form-label">Width</label>
                                                 <input type="number" step="any" name="width" class="form-control" value="{{ old('width', $load->width) }}">
                                             </div>
-                                            <div class="col-md-4 mb-3">
+                                            <div class="col-md-3 mb-3">
                                                 <label class="form-label">Height</label>
                                                 <input type="number" step="any" name="height" class="form-control" value="{{ old('height', $load->height) }}">
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6 mb-3">
+                                              <div class="col-md-3 mb-3">
                                                 <label class="form-label">Dimension Unit</label>
                                                 <select name="dimension_unit" id="dimension_unit_select" class="form-control" onchange="toggleOtherDimensionUnit()">
                                                     <option value="mm" {{ old('dimension_unit', $load->dimension_unit) == 'mm' ? 'selected' : '' }}>mm</option>
@@ -241,83 +224,92 @@
                                                 </select>
                                                 <input type="text" name="dimension_unit_other" id="dimension_unit_other" class="form-control mt-2" placeholder="Please specify" style="display: none;" value="{{ old('dimension_unit_other', $load->dimension_unit_other) }}">
                                             </div>
-@push('scripts')
-<script>
-    function toggleOtherJobDescription() {
-        var select = document.getElementById('job_description_select');
-        var otherInput = document.getElementById('job_description_other');
-        if (select.value === 'Other') {
-            otherInput.style.display = 'block';
-        } else {
-            otherInput.style.display = 'none';
-        }
-    }
-    function toggleOtherSuggestedVehicle() {
-        var select = document.getElementById('suggested_vehicle_select');
-        var otherInput = document.getElementById('suggested_vehicle_other');
-        if (select.value === 'Other') {
-            otherInput.style.display = 'block';
-        } else {
-            otherInput.style.display = 'none';
-        }
-    }
-    function toggleOtherPackaging() {
-        var select = document.getElementById('packaging_select');
-        var otherInput = document.getElementById('packaging_other');
-        if (select.value === 'Other') {
-            otherInput.style.display = 'block';
-        } else {
-            otherInput.style.display = 'none';
-        }
-    }
-    function toggleOtherWeightUnit() {
-        var select = document.getElementById('weight_unit_select');
-        var otherInput = document.getElementById('weight_unit_other');
-        if (select.value === 'Other') {
-            otherInput.style.display = 'block';
-        } else {
-            otherInput.style.display = 'none';
-        }
-    }
-    function toggleOtherBodyType() {
-        var select = document.getElementById('body_type_select');
-        var otherInput = document.getElementById('body_type_other');
-        if (select.value === 'Other') {
-            otherInput.style.display = 'block';
-        } else {
-            otherInput.style.display = 'none';
-        }
-    }
-    function toggleOtherJobType() {
-        var select = document.getElementById('job_type_select');
-        var otherInput = document.getElementById('job_type_other');
-        if (select.value === 'Other') {
-            otherInput.style.display = 'block';
-        } else {
-            otherInput.style.display = 'none';
-        }
-    }
-    function toggleOtherDimensionUnit() {
-        var select = document.getElementById('dimension_unit_select');
-        var otherInput = document.getElementById('dimension_unit_other');
-        if (select.value === 'Other') {
-            otherInput.style.display = 'block';
-        } else {
-            otherInput.style.display = 'none';
-        }
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-        toggleOtherJobDescription();
-        toggleOtherSuggestedVehicle();
-        toggleOtherPackaging();
-        toggleOtherWeightUnit();
-        toggleOtherBodyType();
-        toggleOtherJobType();
-        toggleOtherDimensionUnit();
-    });
-</script>
-@endpush
-                                            <div class="col-md-6 mb-3">
+                                            @push('scripts')
+                                                <script>
+                                                    function toggleOtherJobDescription() {
+                                                        var select = document.getElementById('job_description_select');
+                                                        var otherInput = document.getElementById('job_description_other');
+                                                        if (select.value === 'Other') {
+                                                            otherInput.style.display = 'block';
+                                                        } else {
+                                                            otherInput.style.display = 'none';
+                                                        }
+                                                    }
+
+                                                    function toggleOtherSuggestedVehicle() {
+                                                        var select = document.getElementById('suggested_vehicle_select');
+                                                        var otherInput = document.getElementById('suggested_vehicle_other');
+                                                        if (select.value === 'Other') {
+                                                            otherInput.style.display = 'block';
+                                                        } else {
+                                                            otherInput.style.display = 'none';
+                                                        }
+                                                    }
+
+                                                    function toggleOtherPackaging() {
+                                                        var select = document.getElementById('packaging_select');
+                                                        var otherInput = document.getElementById('packaging_other');
+                                                        if (select.value === 'Other') {
+                                                            otherInput.style.display = 'block';
+                                                        } else {
+                                                            otherInput.style.display = 'none';
+                                                        }
+                                                    }
+
+                                                    function toggleOtherWeightUnit() {
+                                                        var select = document.getElementById('weight_unit_select');
+                                                        var otherInput = document.getElementById('weight_unit_other');
+                                                        if (select.value === 'Other') {
+                                                            otherInput.style.display = 'block';
+                                                        } else {
+                                                            otherInput.style.display = 'none';
+                                                        }
+                                                    }
+
+                                                    function toggleOtherBodyType() {
+                                                        var select = document.getElementById('body_type_select');
+                                                        var otherInput = document.getElementById('body_type_other');
+                                                        if (select.value === 'Other') {
+                                                            otherInput.style.display = 'block';
+                                                        } else {
+                                                            otherInput.style.display = 'none';
+                                                        }
+                                                    }
+
+                                                    function toggleOtherJobType() {
+                                                        var select = document.getElementById('job_type_select');
+                                                        var otherInput = document.getElementById('job_type_other');
+                                                        if (select.value === 'Other') {
+                                                            otherInput.style.display = 'block';
+                                                        } else {
+                                                            otherInput.style.display = 'none';
+                                                        }
+                                                    }
+
+                                                    function toggleOtherDimensionUnit() {
+                                                        var select = document.getElementById('dimension_unit_select');
+                                                        var otherInput = document.getElementById('dimension_unit_other');
+                                                        if (select.value === 'Other') {
+                                                            otherInput.style.display = 'block';
+                                                        } else {
+                                                            otherInput.style.display = 'none';
+                                                        }
+                                                    }
+                                                    document.addEventListener('DOMContentLoaded', function() {
+                                                        toggleOtherJobDescription();
+                                                        toggleOtherSuggestedVehicle();
+                                                        toggleOtherPackaging();
+                                                        toggleOtherWeightUnit();
+                                                        toggleOtherBodyType();
+                                                        toggleOtherJobType();
+                                                        toggleOtherDimensionUnit();
+                                                    });
+                                                </script>
+                                            @endpush
+                                        </div>
+                                        <div class="row">
+                                          
+                                            <div class="col-md-12 mb-3">
                                                 <label class="form-label">Notes</label>
                                                 <textarea name="notes" class="form-control">{{ old('notes', $load->notes) }}</textarea>
                                             </div>
@@ -332,11 +324,11 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-md-4 mb-3">
+                                            <div class="col-md-6 mb-3">
                                                 <label class="form-label">Document Name</label>
                                                 <input type="text" name="document_name" class="form-control" value="{{ old('document_name', $load->document_name) }}">
                                             </div>
-                                            <div class="col-md-4 mb-3">
+                                            <div class="col-md-6 mb-3">
                                                 <label class="form-label">Upload Document</label>
                                                 <input type="file" name="upload_document" class="form-control">
                                                 @if (!empty($load->upload_document))
@@ -345,31 +337,11 @@
                                                     </div>
                                                 @endif
                                             </div>
-                                            <div class="col-md-4 mb-3">
+                                            <div class="col-md-6 mb-3">
                                                 <label class="form-label">Distance (km)</label>
                                                 <input type="number" step="any" name="distance_km" class="form-control" value="{{ old('distance_km', $load->distance_km) }}">
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4 mb-3">
-                                                <label class="form-label">Distance (miles)</label>
-                                                <input type="number" step="any" name="distance_miles" class="form-control" value="{{ old('distance_miles', $load->distance_miles) }}">
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <label class="form-label">Rate per km</label>
-                                                <input type="number" step="any" name="rate_per_km" class="form-control" value="{{ old('rate_per_km', $load->rate_per_km) }}">
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <label class="form-label">Rate per mile</label>
-                                                <input type="number" step="any" name="rate_per_mile" class="form-control" value="{{ old('rate_per_mile', $load->rate_per_mile) }}">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6 mb-3">
-                                                <label class="form-label">Currency</label>
-                                                <input type="text" name="currency" class="form-control" value="{{ old('currency', $load->currency) }}">
-                                            </div>
-                                            <div class="col-md-6 mb-3">
+                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Status</label>
                                                 <select name="status" class="form-control">
                                                     <option value="pending" {{ old('status', $load->status ?? 'pending') == 'pending' ? 'selected' : '' }}>Pending</option>
@@ -382,6 +354,27 @@
                                                     <option value="cancelled" {{ old('status', $load->status ?? 'pending') == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
                                                 </select>
                                             </div>
+                                        </div>
+                                        {{-- <div class="row">
+                                            <div class="col-md-4 mb-3">
+                                                <label class="form-label">Distance (miles)</label>
+                                                <input type="number" step="any" name="distance_miles" class="form-control" value="{{ old('distance_miles', $load->distance_miles) }}">
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label class="form-label">Rate per km</label>
+                                                <input type="number" step="any" name="rate_per_km" class="form-control" value="{{ old('rate_per_km', $load->rate_per_km) }}">
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label class="form-label">Rate per mile</label>
+                                                <input type="number" step="any" name="rate_per_mile" class="form-control" value="{{ old('rate_per_mile', $load->rate_per_mile) }}">
+                                            </div>
+                                        </div> --}}
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label class="form-label">Currency</label>
+                                                <input type="text" name="currency" class="form-control" value="{{ old('currency', $load->currency) }}">
+                                            </div>
+                                           
                                         </div>
                                     </div>
                                 </div>
