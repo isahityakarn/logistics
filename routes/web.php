@@ -1,4 +1,5 @@
 
+
 <?php
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -34,6 +35,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'adminDashboard'])->name('admin.dashboard');
     Route::get('/drivers', [DashboardController::class, 'listDrivers'])->name('admin.drivers');
     Route::get('/companies', [DashboardController::class, 'listCompanies'])->name('admin.companies');
+    Route::get('/users/by-type', [\App\Http\Controllers\UserController::class, 'byType'])->name('admin.users.byType');
     // Logistics Load Routes for Admin
 });
 

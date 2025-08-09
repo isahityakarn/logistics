@@ -1,3 +1,4 @@
+
  <nav class="sidebar-nav">
      <ul class="nav flex-column">
 
@@ -27,8 +28,14 @@
                    Bids
                  </a>
              </li>
-        
-     
+                     <li class="nav-item">
+                 <a class="nav-link {{ request()->routeIs('admin.users.byType') ? 'active' : '' }}"
+                     href="{{ route('admin.users.byType') }}">
+                     <i class="bi bi-people"></i>
+                     Users by Type
+                 </a>
+             </li>
+          
    
          @elseif(Auth::user()->user_type === 'company')
              <li class="nav-item">
