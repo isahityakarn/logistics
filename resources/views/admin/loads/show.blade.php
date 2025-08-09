@@ -34,10 +34,10 @@
                         <dd class="col-sm-7">{{ $load->pickup_company }}</dd>
                         <dt class="col-sm-5">Additional Info</dt>
                         <dd class="col-sm-7">{{ $load->pickup_additional_info }}</dd>
-                        <dt class="col-sm-5">Latitude</dt>
+                        {{-- <dt class="col-sm-5">Latitude</dt>
                         <dd class="col-sm-7">{{ $load->pickup_latitude }}</dd>
                         <dt class="col-sm-5">Longitude</dt>
-                        <dd class="col-sm-7">{{ $load->pickup_longitude }}</dd>
+                        <dd class="col-sm-7">{{ $load->pickup_longitude }}</dd> --}}
                         <dt class="col-sm-5">Date Time From</dt>
                         <dd class="col-sm-7">{{ $load->pickup_date_time_from }}</dd>
                         <dt class="col-sm-5">Date Time To</dt>
@@ -63,10 +63,10 @@
                         <dd class="col-sm-7">{{ $load->delivery_company }}</dd>
                         <dt class="col-sm-5">Additional Info</dt>
                         <dd class="col-sm-7">{{ $load->delivery_additional_info }}</dd>
-                        <dt class="col-sm-5">Latitude</dt>
+                        {{-- <dt class="col-sm-5">Latitude</dt>
                         <dd class="col-sm-7">{{ $load->delivery_latitude }}</dd>
                         <dt class="col-sm-5">Longitude</dt>
-                        <dd class="col-sm-7">{{ $load->delivery_longitude }}</dd>
+                        <dd class="col-sm-7">{{ $load->delivery_longitude }}</dd> --}}
                         <dt class="col-sm-5">Date Time From</dt>
                         <dd class="col-sm-7">{{ $load->delivery_date_time_from }}</dd>
                         <dt class="col-sm-5">Date Time To</dt>
@@ -129,14 +129,16 @@
                         <dd class="col-sm-7">{{ $load->upload_document }}</dd>
                         <dt class="col-sm-5">Distance (km)</dt>
                         <dd class="col-sm-7">{{ $load->distance_km }}</dd>
-                        <dt class="col-sm-5">Distance (miles)</dt>
+
+                        {{-- <dt class="col-sm-5">Distance (miles)</dt>
                         <dd class="col-sm-7">{{ $load->distance_miles }}</dd>
                         <dt class="col-sm-5">Rate per km</dt>
                         <dd class="col-sm-7">{{ $load->rate_per_km }}</dd>
                         <dt class="col-sm-5">Rate per mile</dt>
                         <dd class="col-sm-7">{{ $load->rate_per_mile }}</dd>
                         <dt class="col-sm-5">Currency</dt>
-                        <dd class="col-sm-7">{{ $load->currency }}</dd>
+                        <dd class="col-sm-7">{{ $load->currency }}</dd> --}}
+
                         <dt class="col-sm-5">Status</dt>
                         <dd class="col-sm-7">{{ $load->status }}</dd>
                     </dl>
