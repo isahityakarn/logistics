@@ -369,13 +369,13 @@
                                                 <input type="number" step="any" name="rate_per_mile" class="form-control" value="{{ old('rate_per_mile', $load->rate_per_mile) }}">
                                             </div>
                                         </div> --}}
-                                        <div class="row">
+                                        {{-- <div class="row">
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Currency</label>
                                                 <input type="text" name="currency" class="form-control" value="{{ old('currency', $load->currency) }}">
                                             </div>
                                            
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                                 <div class="card mb-4 border-secondary">
