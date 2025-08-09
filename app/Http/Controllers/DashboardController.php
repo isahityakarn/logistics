@@ -72,15 +72,39 @@ class DashboardController extends Controller
     public function driverDashboard()
     {
         $user = Auth::user();
-        $availableJobsCount = 100;
-        $assignedJobsCount = 800;
-        $completedJobsCount = 100;
-        $totalEarnings = 1000;
-        $availableJobs = [];
-        
+        // Available jobs: all loads with status 'pending' or 'assigned' and not assigned to this driver
+        $availableJobs = \App\Models\Load::with(['bids.driver'])
+            ->whereIn('status', ['pending', 'assigned'])
+            ->where(function($q) use ($user) {
+                $q->whereNull('driver_id')->orWhere('driver_id', '!=', $user->id);
+            })
+            ->latest()
+            ->take(5)
+            ->get();
+        $availableJobsCount = \App\Models\Load::whereIn('status', ['pending', 'assigned'])
+            ->where(function($q) use ($user) {
+                $q->whereNull('driver_id')->orWhere('driver_id', '!=', $user->id);
+            })
+            ->count();
+
+        // Assigned jobs: loads assigned to this driver and not completed/cancelled
+        $assignedJobsCount = \App\Models\Load::where('driver_id', $user->id)
+            ->whereIn('status', ['assigned', 'in_progress', 'picked_up', 'in_transit'])
+            ->count();
+
+        // Completed jobs: loads assigned to this driver and status completed
+        $completedJobsCount = \App\Models\Load::where('driver_id', $user->id)
+            ->where('status', 'completed')
+            ->count();
+
+        // Total earnings: sum of price from bids where driver is this user and status completed
+        $totalEarnings = \App\Models\Bid::where('driver_id', $user->id)
+            ->where('status', 'completed')
+            ->sum('price');
+
         return view('dashboard.driver', compact(
             'availableJobsCount',
-            'assignedJobsCount', 
+            'assignedJobsCount',
             'completedJobsCount',
             'totalEarnings',
             'availableJobs'

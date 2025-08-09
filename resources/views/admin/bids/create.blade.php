@@ -39,9 +39,13 @@
                         <label class="form-label">Driver</label>
                         <select name="driver_id" class="form-control">
                             <option value="">Select Driver</option>
-                            @foreach($drivers as $driver)
-                                <option value="{{ $driver->id }}" {{ old('driver_id') == $driver->id ? 'selected' : '' }}>{{ $driver->name }}</option>
-                            @endforeach
+                            @if(auth()->user()->user_type === 'driver')
+                                <option value="{{ auth()->user()->id }}" selected>{{ auth()->user()->name }}</option>
+                            @else
+                                @foreach($drivers as $driver)
+                                    <option value="{{ $driver->id }}" {{ old('driver_id') == $driver->id ? 'selected' : '' }}>{{ $driver->name }}</option>
+                                @endforeach
+                            @endif
                         </select>
                     </div>
                     <div class="mb-3">

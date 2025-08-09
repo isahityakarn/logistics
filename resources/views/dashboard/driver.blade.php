@@ -76,29 +76,53 @@
                                             <td><strong>#{{ $job->id }}</strong></td>
                                             <td>
                                                 <strong>{{ $job->pickup_location }}</strong><br>
-                                                <small
-                                                    class="text-muted">{{ Str::limit($job->pickup_address, 25) }}</small>
+                                                <small class="text-muted">{{ $job->pickup_address ?? '' }}</small>
                                             </td>
                                             <td>
-                                                <strong>{{ $job->delivery_contact }}</strong><br>
-                                                <small
-                                                    class="text-muted">{{ Str::limit($job->delivery_address, 25) }}</small>
+                                                <strong>{{ $job->delivery_location }}</strong><br>
+                                                <small class="text-muted">{{ $job->delivery_address ?? '' }}</small>
                                             </td>
                                             <td>
-                                                <strong
-                                                    class="text-success">${{ number_format($job->total_price, 2) }}</strong>
+                                                <strong class="text-success">${{ number_format($job->total_price ?? 0, 2) }}</strong>
                                             </td>
                                             <td>
                                                 <span class="badge bg-warning">Available</span>
                                             </td>
                                             <td>
-                                                <a href="{{ route('driver.logistics-load.show', $job) }}"
-                                                    class="btn btn-sm btn-primary">
+                                                <a href="#" class="btn btn-sm btn-primary">
                                                     <i class="bi bi-eye"></i>
                                                     View
                                                 </a>
                                             </td>
                                         </tr>
+                                        @if($job->bids && count($job->bids))
+                                            <tr>
+                                                <td colspan="6">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered table-sm mb-0">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Bid #</th>
+                                                                    <th>Driver</th>
+                                                                    <th>Price</th>
+                                                                    <th>Status</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach($job->bids as $bid)
+                                                                    <tr>
+                                                                        <td>{{ $bid->id }}</td>
+                                                                        <td>{{ $bid->driver->name ?? '-' }}</td>
+                                                                        <td>${{ number_format($bid->price, 2) }}</td>
+                                                                        <td><span class="badge bg-secondary">{{ ucfirst($bid->status) }}</span></td>
+                                                                    </tr>
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endif
                                     @endforeach
                                 </tbody>
                             </table>

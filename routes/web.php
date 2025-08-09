@@ -57,3 +57,5 @@ Route::resource('loads', LoadController::class)->middleware('auth');
 
 Route::resource('bids', BidController::class)->middleware('auth');
 
+Route::resource('logistics-load', LoadController::class)->names('driver.logistics-load')->middleware('auth');
+

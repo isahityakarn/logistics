@@ -4,13 +4,7 @@
 
 
          @if (Auth::user()->user_type === 'admin')
-             <li class="nav-item">
-                 <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"
-                     href="{{ route('admin.dashboard') }}">
-                     <i class="bi bi-shield-check"></i>
-                     Admin Panel
-                 </a>
-             </li>
+            
 
               <li class="nav-item">
                  <a class="nav-link {{ request()->routeIs('loads.index') ? 'active' : '' }}"
@@ -53,6 +47,14 @@
                      href="{{ route('driver.dashboard') }}">
                      <i class="bi bi-truck"></i>
                      Driver Panel
+                 </a>
+             </li>
+
+               <li class="nav-item">
+                 <a class="nav-link {{ request()->routeIs('loads.index') ? 'active' : '' }}"
+                     href="{{ route('loads.index') }}">
+                     <i class="bi bi-shield-check"></i>
+                   Load
                  </a>
              </li>
             

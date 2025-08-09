@@ -54,4 +54,11 @@ class Load extends Model
         'assigned_at',
         'completed_at',
     ];
+    /**
+     * Get all bids for this load.
+     */
+    public function bids()
+    {
+        return $this->hasMany(\App\Models\Bid::class, 'load_id');
+    }
 }
