@@ -184,9 +184,9 @@
                 
                 @if(auth()->user()->user_type === 'admin')
                     <li>
-                        <a href="{{ route('admin.logistics-load.index') }}" class="{{ request()->routeIs('admin.logistics-load.*') ? 'active' : '' }}">
-                            <i class="bi bi-box-seam"></i>
-                            Manage Loads
+                        <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                            <i class="bi bi-speedometer2"></i>
+                            Admin Dashboard
                         </a>
                     </li>
                     <li>
@@ -201,66 +201,18 @@
                             View Companies
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ route('load-bids.index') }}" class="{{ request()->routeIs('load-bids.*') ? 'active' : '' }}">
-                            <i class="bi bi-currency-dollar"></i>
-                            Load Bids
-                        </a>
-                    </li>
                 @elseif(auth()->user()->user_type === 'company')
                     <li>
-                        <a href="{{ route('company.logistics-load.index') }}" class="{{ request()->routeIs('company.logistics-load.*') ? 'active' : '' }}">
-                            <i class="bi bi-box-seam"></i>
-                            My Loads
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('load-bids.index') }}" class="{{ request()->routeIs('load-bids.*') ? 'active' : '' }}">
-                            <i class="bi bi-currency-dollar"></i>
-                            Load Bids
+                        <a href="{{ route('company.dashboard') }}" class="{{ request()->routeIs('company.dashboard') ? 'active' : '' }}">
+                            <i class="bi bi-speedometer2"></i>
+                            Company Dashboard
                         </a>
                     </li>
                 @elseif(auth()->user()->user_type === 'driver')
                     <li>
-                        <a href="{{ route('driver.logistics-load.index') }}" class="{{ request()->routeIs('driver.logistics-load.*') ? 'active' : '' }}">
-                            <i class="bi bi-box-seam"></i>
-                            Available Loads
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="{{ request()->input('status') === 'assigned' ? 'active' : '' }}">
-                            <i class="bi bi-clipboard-check"></i>
-                            Assigned Loads
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{" class="">
-                            <i class="bi bi-check-circle"></i>
-                            Completed Loads
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="">
-                            <i class="bi bi-plus-circle"></i>
-                            Create Load
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="">
-                            <i class="bi bi-check-circle"></i>
-                            Completed Loads
-                        </a>
-                    </li>
-                    <li>
-                         <a href="" class="">
-                            <i class="bi bi-plus-circle"></i>
-                            Create Load
-                        </a>
-                    </li>
-                    <li>
-                          <a href="" class="">
-                            <i class="bi bi-currency-dollar"></i>
-                            Load Bids
+                        <a href="{{ route('driver.dashboard') }}" class="{{ request()->routeIs('driver.dashboard') ? 'active' : '' }}">
+                            <i class="bi bi-speedometer2"></i>
+                            Driver Dashboard
                         </a>
                     </li>
                 @endif

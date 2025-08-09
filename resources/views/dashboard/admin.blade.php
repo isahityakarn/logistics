@@ -129,22 +129,22 @@
                 </div>
                 <div class="card-body">
                     <div class="d-grid gap-2">
-                        <button class="btn btn-outline-primary">
+                        <a href="{{ route('register') }}" class="btn btn-outline-primary">
                             <i class="bi bi-person-plus"></i>
                             Add New User
-                        </button>
-                        <button class="btn btn-outline-success">
+                        </a>
+                        <a href="{{ route('register') }}?type=company" class="btn btn-outline-success">
                             <i class="bi bi-building-add"></i>
                             Register Company
-                        </button>
-                        <button class="btn btn-outline-warning">
+                        </a>
+                        <a href="{{ route('register') }}?type=driver" class="btn btn-outline-warning">
                             <i class="bi bi-truck"></i>
                             Add Driver
-                        </button>
-                        <button class="btn btn-outline-info">
+                        </a>
+                        <a href="#" class="btn btn-outline-info" onclick="alert('Reports feature coming soon!')">
                             <i class="bi bi-graph-up"></i>
                             View Reports
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
