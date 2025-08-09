@@ -57,7 +57,13 @@
                    Load
                  </a>
              </li>
-            
+              <li class="nav-item">
+                 <a class="nav-link {{ request()->routeIs('loads.index') ? 'active' : '' }}"
+                     href="{{ route('bids.index') }}">
+                     <i class="bi bi-shield-check"></i>
+                   Bids
+                 </a>
+             </li>
 
 
         

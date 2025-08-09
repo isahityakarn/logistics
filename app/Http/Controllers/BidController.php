@@ -5,12 +5,22 @@ use App\Models\Bid;
 use App\Models\Load;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BidController extends Controller
 {
     public function index()
     {
-        $bids = Bid::with(['loadRelation', 'driver'])->latest()->paginate(10);
+        // Show only the current driver's bids if user is a driver
+        if (Auth::user() && Auth::user()->user_type === 'driver') {
+            $bids = Bid::with(['loadRelation', 'driver'])
+                ->where('driver_id', Auth::id())
+                ->latest()
+                ->paginate(10);
+        } else {
+            // Admin or company sees all bids
+            $bids = Bid::with(['loadRelation', 'driver'])->latest()->paginate(10);
+        }
         return view('admin.bids.index', compact('bids'));
     }
 
