@@ -18,6 +18,9 @@
                     <tr>
                         <th>ID</th>
                         <th>Load</th>
+                        <th>Pickup Company</th>
+                        <th>Pickup Location</th>
+                        <th>Delivery Location</th>
                         <th>Driver</th>
                         <th>Price</th>
                         <th>Status</th>
@@ -29,6 +32,9 @@
                         <tr>
                             <td>{{ $bid->id }}</td>
                             <td>{{ $bid->loadRelation->id ?? '-' }}</td>
+                            <td>{{ $bid->loadRelation->pickup_company ?? '-' }}</td>
+                            <td>{{ $bid->loadRelation->pickup_location ?? '-' }}</td>
+                            <td>{{ $bid->loadRelation->delivery_location ?? '-' }}</td>
                             <td>{{ $bid->driver->name ?? '-' }}</td>
                             <td>{{ $bid->price }}</td>
                             <td><span class="badge bg-success">{{ ucfirst($bid->status) }}</span></td>
