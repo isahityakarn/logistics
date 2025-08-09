@@ -3,13 +3,13 @@
 @section('title', 'Loads Dashboard')
 @section('page-title', 'Loads Dashboard')
 
-@section('content') 
+@section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-end mb-3">
             @if (Auth::user()->user_type != 'driver')
-                <a href="{{ route('loads.index') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add New Load</a>
+                <a href="{{ route('loads.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add New Load</a>
             @endif
-           
+
         </div>
         <form method="GET" action="" class="mb-3">
             <div class="row align-items-end">
@@ -90,9 +90,10 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Company</th>
+                                    {{-- <th>Company</th> --}}
                                     <th>Pickup</th>
                                     <th>Delivery</th>
+                                    <th>Distance</th>
                                     <th>Status</th>
                                     <th>Created</th>
                                     <th>Actions</th>
@@ -102,9 +103,10 @@
                                 @forelse($loads->take(5) as $load)
                                     <tr>
                                         <td>{{ $load->id }}</td>
-                                        <td>{{ $load->company_id }}</td>
+                                        {{-- <td>{{ $load->company_id }}</td> --}}
                                         <td>{{ $load->pickup_location }}</td>
                                         <td>{{ $load->delivery_location }}</td>
+                                        <td>{{ $load->distance_km }} KM</td>
                                         <td>
                                             @php
                                                 $statusColors = [
@@ -124,7 +126,7 @@
                                         </td>
                                         <td>{{ $load->created_at ? $load->created_at->format('M d, Y') : '' }}</td>
                                         <td>
-                                            @if (Auth::user()->user_type === 'admin')
+                                            @if (Auth::user()->user_type === 'admin' || Auth::user()->user_type === 'company')
                                                 <a href="{{ route('loads.show', $load) }}" class="btn btn-info btn-sm"
                                                     title="View">
                                                     <i class="fas fa-eye"></i>
@@ -192,20 +194,15 @@
                                             @endif
 
 
-                                                       @if (Auth::user()->user_type === 'driver')
+                                            @if (Auth::user()->user_type === 'driver')
                                                 <a href="{{ route('loads.show', $load) }}" class="btn btn-info btn-sm"
                                                     title="View">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-
-                                             
-
                                                 <a href="{{ route('bids.create', ['load_id' => $load->id]) }}"
                                                     class="btn btn-primary btn-sm" title="Assign Bid">
                                                     <i class="fas fa-gavel"></i> Assign Bid
                                                 </a>
-
-                                               
                                             @endif
                                         </td>
                                     </tr>

@@ -25,6 +25,7 @@ class LoadController extends Controller
 
     public function create()
     {
+        // dd('This is the create method for loads.');
         return view('admin.loads.create');
     }
 
@@ -75,10 +76,15 @@ class LoadController extends Controller
             'assigned_at' => 'nullable|date',
             'completed_at' => 'nullable|date',
         ]);
-        $load=new Load;
-        $load->company_id=Auth::user()->id;
-        $load->pickup_location=$request->pickup_location;
-        $load->pickup_phone=$request->pickup_phone;
+
+        // $distanceKM = $this->getDistance($request->pickup_location, $request->delivery_location);
+        // dd($distanceKM);
+        // $distanceValue = floatval($distanceKM['distance'] ?? 0);
+        // return $distanceKM['distance'] ?? null;
+        $load = new Load;
+        $load->company_id = Auth::user()->id;
+        $load->pickup_location = $request->pickup_location;
+        $load->pickup_phone = $request->pickup_phone;
         $load->pickup_company=$request->pickup_company;
         $load->pickup_additional_info=$request->pickup_additional_info;
         $load->pickup_latitude=$request->pickup_latitude;
@@ -123,6 +129,8 @@ class LoadController extends Controller
 
         return redirect()->route('loads.index')->with('success', 'Load created successfully.');
     }
+
+
 
     public function show(Load $load)
     {
