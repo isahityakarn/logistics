@@ -29,7 +29,9 @@
                         <select name="load_id" class="form-control">
                             <option value="">Select Load</option>
                             @foreach($loads as $load)
-                                <option value="{{ $load->id }}" {{ old('load_id', $bid->load_id) == $load->id ? 'selected' : '' }}>{{ $load->id }}</option>
+                                <option value="{{ $load->id }}" {{ old('load_id', $bid->load_id) == $load->id ? 'selected' : '' }}>
+                                    #{{ $load->id }} - {{ $load->pickup_company ?? 'No Company' }}
+                                </option>
                             @endforeach
                         </select>
                     </div>

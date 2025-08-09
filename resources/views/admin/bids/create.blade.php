@@ -30,7 +30,7 @@
                             @foreach($loads as $load)
                                 <option value="{{ $load->id }}" 
                                     {{ (isset($selectedLoadId) && $selectedLoadId == $load->id) ? 'selected' : (old('load_id') == $load->id ? 'selected' : '') }}>
-                                    {{ $load->id }}
+                                    #{{ $load->id }} - {{ $load->pickup_company ?? 'No Company' }}
                                 </option>
                             @endforeach
                         </select>
