@@ -121,7 +121,7 @@
                                         <a href="{{ route('loads.edit', $load) }}" class="btn btn-warning btn-sm" title="Edit">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a href="{{ route('bids.index', ['load_id' => $load->id]) }}" class="btn btn-primary btn-sm" title="Assign Bid">
+                                        <a href="{{ route('bids.create', ['load_id' => $load->id]) }}" class="btn btn-primary btn-sm" title="Assign Bid">
                                             <i class="fas fa-gavel"></i> Assign Bid
                                         </a>
                                         <form action="{{ route('loads.changeStatus', $load->id) }}" method="POST" class="d-inline">

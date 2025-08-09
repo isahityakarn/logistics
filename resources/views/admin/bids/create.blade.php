@@ -28,7 +28,10 @@
                         <select name="load_id" class="form-control">
                             <option value="">Select Load</option>
                             @foreach($loads as $load)
-                                <option value="{{ $load->id }}" {{ old('load_id') == $load->id ? 'selected' : '' }}>{{ $load->id }}</option>
+                                <option value="{{ $load->id }}" 
+                                    {{ (isset($selectedLoadId) && $selectedLoadId == $load->id) ? 'selected' : (old('load_id') == $load->id ? 'selected' : '') }}>
+                                    {{ $load->id }}
+                                </option>
                             @endforeach
                         </select>
                     </div>

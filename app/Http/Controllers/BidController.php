@@ -14,11 +14,12 @@ class BidController extends Controller
         return view('admin.bids.index', compact('bids'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
         $loads = Load::all();
         $drivers = User::where('user_type', 'driver')->get();
-        return view('admin.bids.create', compact('loads', 'drivers'));
+        $selectedLoadId = $request->query('load_id');
+        return view('admin.bids.create', compact('loads', 'drivers', 'selectedLoadId'));
     }
 
     public function store(Request $request)
