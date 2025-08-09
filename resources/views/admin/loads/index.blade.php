@@ -98,17 +98,55 @@
                                     <td>{{ $load->pickup_location }}</td>
                                     <td>{{ $load->delivery_location }}</td>
                                     <td>
-                                        <span class="badge bg-success">{{ ucfirst($load->status) }}</span>
+                                        @php
+                                            $statusColors = [
+                                                'pending' => 'secondary',
+                                                'assigned' => 'primary',
+                                                'in_progress' => 'info',
+                                                'picked_up' => 'warning',
+                                                'in_transit' => 'dark',
+                                                'delivered' => 'success',
+                                                'completed' => 'success',
+                                                'cancelled' => 'danger',
+                                            ];
+                                            $badgeColor = $statusColors[$load->status] ?? 'secondary';
+                                        @endphp
+                                        <span class="badge bg-{{ $badgeColor }}">{{ ucfirst(str_replace('_', ' ', $load->status)) }}</span>
                                     </td>
                                     <td>{{ $load->created_at ? $load->created_at->format('M d, Y') : '' }}</td>
                                     <td>
-                                    <a href="{{ route('loads.show', $load) }}" class="btn btn-info btn-sm" title="View">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="{{ route('loads.edit', $load) }}" class="btn btn-warning btn-sm" title="Edit">
-                                        <i class="fas fa-edit"></i>
-                                        <!-- If the icon does not show, ensure FontAwesome 5+ is loaded in your layout. -->
-                                    </a>
+                                        <a href="{{ route('loads.show', $load) }}" class="btn btn-info btn-sm" title="View">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a href="{{ route('loads.edit', $load) }}" class="btn btn-warning btn-sm" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="{{ route('bids.index', ['load_id' => $load->id]) }}" class="btn btn-primary btn-sm" title="Assign Bid">
+                                            <i class="fas fa-gavel"></i> Assign Bid
+                                        </a>
+                                        <form action="{{ route('loads.changeStatus', $load->id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            <select name="status" class="form-select form-select-sm d-inline w-auto status-dropdown" onchange="this.form.submit()"
+                                                style="background-color: {{
+                                                    $load->status == 'pending' ? '#6c757d' :
+                                                    ($load->status == 'assigned' ? '#0d6efd' :
+                                                    ($load->status == 'in_progress' ? '#0dcaf0' :
+                                                    ($load->status == 'picked_up' ? '#ffc107' :
+                                                    ($load->status == 'in_transit' ? '#212529' :
+                                                    ($load->status == 'delivered' ? '#198754' :
+                                                    ($load->status == 'completed' ? '#198754' :
+                                                    ($load->status == 'cancelled' ? '#dc3545' : '#6c757d')))))))
+                                                }}; color: #fff;">
+                                                <option value="pending" {{ $load->status == 'pending' ? 'selected' : '' }}>Pending</option>
+                                                <option value="assigned" {{ $load->status == 'assigned' ? 'selected' : '' }}>Assigned</option>
+                                                <option value="in_progress" {{ $load->status == 'in_progress' ? 'selected' : '' }}>In Progress</option>
+                                                <option value="picked_up" {{ $load->status == 'picked_up' ? 'selected' : '' }}>Picked Up</option>
+                                                <option value="in_transit" {{ $load->status == 'in_transit' ? 'selected' : '' }}>In Transit</option>
+                                                <option value="delivered" {{ $load->status == 'delivered' ? 'selected' : '' }}>Delivered</option>
+                                                <option value="completed" {{ $load->status == 'completed' ? 'selected' : '' }}>Completed</option>
+                                                <option value="cancelled" {{ $load->status == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
+                                            </select>
+                                        </form>
                                     </td>
                                 </tr>
                             @empty

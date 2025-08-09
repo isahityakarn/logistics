@@ -49,6 +49,7 @@ Route::prefix('driver')->middleware('auth')->group(function () {
     
 });
 
+Route::post('loads/{load}/change-status', [LoadController::class, 'changeStatus'])->name('loads.changeStatus')->middleware('auth');
 Route::resource('loads', LoadController::class)->middleware('auth');
     
 

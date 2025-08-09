@@ -22,7 +22,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form action="{{ route('loads.update', $load) }}" method="POST">
+                    <form action="{{ route('loads.update', $load) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row">
@@ -338,7 +338,12 @@
                                             </div>
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label">Upload Document</label>
-                                                <input type="text" name="upload_document" class="form-control" value="{{ old('upload_document', $load->upload_document) }}">
+                                                <input type="file" name="upload_document" class="form-control">
+                                                @if (!empty($load->upload_document))
+                                                    <div class="mt-2">
+                                                        <a href="{{ asset('storage/' . $load->upload_document) }}" target="_blank">View Current Document</a>
+                                                    </div>
+                                                @endif
                                             </div>
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label">Distance (km)</label>

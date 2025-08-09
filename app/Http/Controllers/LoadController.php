@@ -8,6 +8,15 @@ use Illuminate\Support\Facades\Auth;
 
 class LoadController extends Controller
 {
+    public function changeStatus(Request $request, Load $load)
+    {
+        $request->validate([
+            'status' => 'required|string',
+        ]);
+        $load->status = $request->status;
+        $load->save();
+        return redirect()->back()->with('success', 'Status updated successfully.');
+    }
     public function index()
     {
         $loads = Load::all();

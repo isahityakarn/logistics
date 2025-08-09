@@ -20,7 +20,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form action="{{ route('loads.store') }}" method="POST">
+                    <form action="{{ route('loads.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                      
                 
@@ -592,8 +592,7 @@
                                             </div>
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label">Upload Document</label>
-                                                <input type="text" name="upload_document" class="form-control"
-                                                    value="{{ old('upload_document') }}">
+                                                <input type="file" name="upload_document" class="form-control">
                                             </div>
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label">Distance (km)</label>
