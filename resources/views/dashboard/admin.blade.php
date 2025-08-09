@@ -51,39 +51,69 @@
 
     <div class="row">
         <div class="col-lg-8 mb-4">
-            <div class="card card-shadow border-0">
-                <div class="card-header gradient-bg text-white">
-                    <h5 class="mb-0">
-                        <i class="bi bi-list-ul"></i>
-                        Recent Users
-                    </h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card card-shadow border-0 mb-4">
+                        <div class="card-header gradient-bg text-white">
+                            <h5 class="mb-0">
+                                <i class="bi bi-person-badge"></i>
+                                Recent Drivers
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Joined</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($recentDrivers as $user)
+                                        <tr>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->created_at->format('M d, Y') }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Type</th>
-                                    <th>Joined</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($recentUsers as $user)
-                                <tr>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>
-                                        <span class="badge bg-{{ $user->user_type == 'admin' ? 'primary' : ($user->user_type == 'company' ? 'success' : 'warning') }}">
-                                            {{ ucfirst($user->user_type) }}
-                                        </span>
-                                    </td>
-                                    <td>{{ $user->created_at->format('M d, Y') }}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                <div class="col-md-6">
+                    <div class="card card-shadow border-0 mb-4">
+                        <div class="card-header gradient-bg text-white">
+                            <h5 class="mb-0">
+                                <i class="bi bi-building"></i>
+                                Recent Companies
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Joined</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($recentCompanies as $user)
+                                        <tr>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->created_at->format('M d, Y') }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
