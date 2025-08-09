@@ -22,6 +22,8 @@
                    Bids
                  </a>
              </li>
+             
+
                      <li class="nav-item">
                  <a class="nav-link {{ request()->routeIs('admin.users.byType') ? 'active' : '' }}"
                      href="{{ route('admin.users.byType') }}">
@@ -39,7 +41,20 @@
                      Company Panel
                  </a>
              </li>
-         
+                   <li class="nav-item">
+                 <a class="nav-link {{ request()->routeIs('loads.index') ? 'active' : '' }}"
+                     href="{{ route('loads.index') }}">
+                     <i class="bi bi-shield-check"></i>
+                   Load
+                 </a>
+             </li>
+          <li class="nav-item">
+                 <a class="nav-link {{ request()->routeIs('loads.index') ? 'active' : '' }}"
+                     href="{{ route('bids.index') }}">
+                     <i class="bi bi-shield-check"></i>
+                   Bids
+                 </a>
+             </li>
           
          @elseif(Auth::user()->user_type === 'driver')
              <li class="nav-item">

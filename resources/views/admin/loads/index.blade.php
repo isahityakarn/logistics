@@ -3,10 +3,13 @@
 @section('title', 'Loads Dashboard')
 @section('page-title', 'Loads Dashboard')
 
-@section('content')
+@section('content') 
     <div class="container-fluid">
         <div class="d-flex justify-content-end mb-3">
-            <a href="{{ route('loads.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add New Load</a>
+            @if (Auth::user()->user_type != 'driver')
+                <a href="{{ route('loads.index') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add New Load</a>
+            @endif
+           
         </div>
         <form method="GET" action="" class="mb-3">
             <div class="row align-items-end">
