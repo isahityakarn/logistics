@@ -139,17 +139,40 @@
                                         <div class="row">
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Job Description</label>
-                                                <textarea name="job_description" class="form-control">{{ old('job_description', $load->job_description) }}</textarea>
+                                                <select name="job_description" id="job_description_select" class="form-control" onchange="toggleOtherJobDescription()">
+                                                    <option value="Delivery Directi" {{ old('job_description', $load->job_description) == 'Delivery Directi' ? 'selected' : '' }}>Delivery Directi</option>
+                                                    <option value="Pickup Only" {{ old('job_description', $load->job_description) == 'Pickup Only' ? 'selected' : '' }}>Pickup Only</option>
+                                                    <option value="Warehouse Transfer" {{ old('job_description', $load->job_description) == 'Warehouse Transfer' ? 'selected' : '' }}>Warehouse Transfer</option>
+                                                    <option value="Line Haul" {{ old('job_description', $load->job_description) == 'Line Haul' ? 'selected' : '' }}>Line Haul</option>
+                                                    <option value="Other" {{ old('job_description', $load->job_description) == 'Other' ? 'selected' : '' }}>Other</option>
+                                                </select>
+                                                <input type="text" name="job_description_other" id="job_description_other" class="form-control mt-2" placeholder="Please specify" style="display: none;" value="{{ old('job_description_other', $load->job_description_other) }}">
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Suggested Vehicle</label>
-                                                <input type="text" name="suggested_vehicle" class="form-control" value="{{ old('suggested_vehicle', $load->suggested_vehicle) }}">
+                                                <select name="suggested_vehicle" id="suggested_vehicle_select" class="form-control" onchange="toggleOtherSuggestedVehicle()">
+                                                    <option value="Truck" {{ old('suggested_vehicle', $load->suggested_vehicle) == 'Truck' ? 'selected' : '' }}>Truck</option>
+                                                    <option value="Van" {{ old('suggested_vehicle', $load->suggested_vehicle) == 'Van' ? 'selected' : '' }}>Van</option>
+                                                    <option value="Trailer" {{ old('suggested_vehicle', $load->suggested_vehicle) == 'Trailer' ? 'selected' : '' }}>Trailer</option>
+                                                    <option value="Container" {{ old('suggested_vehicle', $load->suggested_vehicle) == 'Container' ? 'selected' : '' }}>Container</option>
+                                                    <option value="Pickup" {{ old('suggested_vehicle', $load->suggested_vehicle) == 'Pickup' ? 'selected' : '' }}>Pickup</option>
+                                                    <option value="Other" {{ old('suggested_vehicle', $load->suggested_vehicle) == 'Other' ? 'selected' : '' }}>Other</option>
+                                                </select>
+                                                <input type="text" name="suggested_vehicle_other" id="suggested_vehicle_other" class="form-control mt-2" placeholder="Please specify" style="display: none;" value="{{ old('suggested_vehicle_other', $load->suggested_vehicle_other) }}">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label">Packaging</label>
-                                                <input type="text" name="packaging" class="form-control" value="{{ old('packaging', $load->packaging) }}">
+                                                <select name="packaging" id="packaging_select" class="form-control" onchange="toggleOtherPackaging()">
+                                                    <option value="Box" {{ old('packaging', $load->packaging) == 'Box' ? 'selected' : '' }}>Box</option>
+                                                    <option value="Pallet" {{ old('packaging', $load->packaging) == 'Pallet' ? 'selected' : '' }}>Pallet</option>
+                                                    <option value="Crate" {{ old('packaging', $load->packaging) == 'Crate' ? 'selected' : '' }}>Crate</option>
+                                                    <option value="Bag" {{ old('packaging', $load->packaging) == 'Bag' ? 'selected' : '' }}>Bag</option>
+                                                    <option value="Drum" {{ old('packaging', $load->packaging) == 'Drum' ? 'selected' : '' }}>Drum</option>
+                                                    <option value="Other" {{ old('packaging', $load->packaging) == 'Other' ? 'selected' : '' }}>Other</option>
+                                                </select>
+                                                <input type="text" name="packaging_other" id="packaging_other" class="form-control mt-2" placeholder="Please specify" style="display: none;" value="{{ old('packaging_other', $load->packaging_other) }}">
                                             </div>
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label">No of Items</label>
@@ -163,15 +186,33 @@
                                         <div class="row">
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label">Weight Unit</label>
-                                                <input type="text" name="weight_unit" class="form-control" value="{{ old('weight_unit', $load->weight_unit) }}">
+                                                <select name="weight_unit" id="weight_unit_select" class="form-control" onchange="toggleOtherWeightUnit()">
+                                                    <option value="kg" {{ old('weight_unit', $load->weight_unit) == 'kg' ? 'selected' : '' }}>kg</option>
+                                                    <option value="lbs" {{ old('weight_unit', $load->weight_unit) == 'lbs' ? 'selected' : '' }}>lbs</option>
+                                                    <option value="Other" {{ old('weight_unit', $load->weight_unit) == 'Other' ? 'selected' : '' }}>Other</option>
+                                                </select>
+                                                <input type="text" name="weight_unit_other" id="weight_unit_other" class="form-control mt-2" placeholder="Please specify" style="display: none;" value="{{ old('weight_unit_other', $load->weight_unit_other) }}">
                                             </div>
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label">Body Type</label>
-                                                <input type="text" name="body_type" class="form-control" value="{{ old('body_type', $load->body_type) }}">
+                                                <select name="body_type" id="body_type_select" class="form-control" onchange="toggleOtherBodyType()">
+                                                    <option value="Flatbed" {{ old('body_type', $load->body_type) == 'Flatbed' ? 'selected' : '' }}>Flatbed</option>
+                                                    <option value="Box Truck" {{ old('body_type', $load->body_type) == 'Box Truck' ? 'selected' : '' }}>Box Truck</option>
+                                                    <option value="Reefer" {{ old('body_type', $load->body_type) == 'Reefer' ? 'selected' : '' }}>Reefer</option>
+                                                    <option value="Tanker" {{ old('body_type', $load->body_type) == 'Tanker' ? 'selected' : '' }}>Tanker</option>
+                                                    <option value="Curtainside" {{ old('body_type', $load->body_type) == 'Curtainside' ? 'selected' : '' }}>Curtainside</option>
+                                                    <option value="Other" {{ old('body_type', $load->body_type) == 'Other' ? 'selected' : '' }}>Other</option>
+                                                </select>
+                                                <input type="text" name="body_type_other" id="body_type_other" class="form-control mt-2" placeholder="Please specify" style="display: none;" value="{{ old('body_type_other', $load->body_type_other) }}">
                                             </div>
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label">Job Type</label>
-                                                <input type="text" name="job_type" class="form-control" value="{{ old('job_type', $load->job_type) }}">
+                                                <select name="job_type" id="job_type_select" class="form-control" onchange="toggleOtherJobType()">
+                                                    <option value="Hotshot" {{ old('job_type', $load->job_type) == 'Hotshot' ? 'selected' : '' }}>Hotshot</option>
+                                                    <option value="Backload" {{ old('job_type', $load->job_type) == 'Backload' ? 'selected' : '' }}>Backload</option>
+                                                    <option value="Other" {{ old('job_type', $load->job_type) == 'Other' ? 'selected' : '' }}>Other</option>
+                                                </select>
+                                                <input type="text" name="job_type_other" id="job_type_other" class="form-control mt-2" placeholder="Please specify" style="display: none;" value="{{ old('job_type_other', $load->job_type_other) }}">
                                             </div>
                                         </div>
                                         <div class="row">
@@ -191,8 +232,91 @@
                                         <div class="row">
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Dimension Unit</label>
-                                                <input type="text" name="dimension_unit" class="form-control" value="{{ old('dimension_unit', $load->dimension_unit) }}">
+                                                <select name="dimension_unit" id="dimension_unit_select" class="form-control" onchange="toggleOtherDimensionUnit()">
+                                                    <option value="mm" {{ old('dimension_unit', $load->dimension_unit) == 'mm' ? 'selected' : '' }}>mm</option>
+                                                    <option value="cm" {{ old('dimension_unit', $load->dimension_unit) == 'cm' ? 'selected' : '' }}>cm</option>
+                                                    <option value="in" {{ old('dimension_unit', $load->dimension_unit) == 'in' ? 'selected' : '' }}>in</option>
+                                                    <option value="ft" {{ old('dimension_unit', $load->dimension_unit) == 'ft' ? 'selected' : '' }}>ft</option>
+                                                    <option value="Other" {{ old('dimension_unit', $load->dimension_unit) == 'Other' ? 'selected' : '' }}>Other</option>
+                                                </select>
+                                                <input type="text" name="dimension_unit_other" id="dimension_unit_other" class="form-control mt-2" placeholder="Please specify" style="display: none;" value="{{ old('dimension_unit_other', $load->dimension_unit_other) }}">
                                             </div>
+@push('scripts')
+<script>
+    function toggleOtherJobDescription() {
+        var select = document.getElementById('job_description_select');
+        var otherInput = document.getElementById('job_description_other');
+        if (select.value === 'Other') {
+            otherInput.style.display = 'block';
+        } else {
+            otherInput.style.display = 'none';
+        }
+    }
+    function toggleOtherSuggestedVehicle() {
+        var select = document.getElementById('suggested_vehicle_select');
+        var otherInput = document.getElementById('suggested_vehicle_other');
+        if (select.value === 'Other') {
+            otherInput.style.display = 'block';
+        } else {
+            otherInput.style.display = 'none';
+        }
+    }
+    function toggleOtherPackaging() {
+        var select = document.getElementById('packaging_select');
+        var otherInput = document.getElementById('packaging_other');
+        if (select.value === 'Other') {
+            otherInput.style.display = 'block';
+        } else {
+            otherInput.style.display = 'none';
+        }
+    }
+    function toggleOtherWeightUnit() {
+        var select = document.getElementById('weight_unit_select');
+        var otherInput = document.getElementById('weight_unit_other');
+        if (select.value === 'Other') {
+            otherInput.style.display = 'block';
+        } else {
+            otherInput.style.display = 'none';
+        }
+    }
+    function toggleOtherBodyType() {
+        var select = document.getElementById('body_type_select');
+        var otherInput = document.getElementById('body_type_other');
+        if (select.value === 'Other') {
+            otherInput.style.display = 'block';
+        } else {
+            otherInput.style.display = 'none';
+        }
+    }
+    function toggleOtherJobType() {
+        var select = document.getElementById('job_type_select');
+        var otherInput = document.getElementById('job_type_other');
+        if (select.value === 'Other') {
+            otherInput.style.display = 'block';
+        } else {
+            otherInput.style.display = 'none';
+        }
+    }
+    function toggleOtherDimensionUnit() {
+        var select = document.getElementById('dimension_unit_select');
+        var otherInput = document.getElementById('dimension_unit_other');
+        if (select.value === 'Other') {
+            otherInput.style.display = 'block';
+        } else {
+            otherInput.style.display = 'none';
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        toggleOtherJobDescription();
+        toggleOtherSuggestedVehicle();
+        toggleOtherPackaging();
+        toggleOtherWeightUnit();
+        toggleOtherBodyType();
+        toggleOtherJobType();
+        toggleOtherDimensionUnit();
+    });
+</script>
+@endpush
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Notes</label>
                                                 <textarea name="notes" class="form-control">{{ old('notes', $load->notes) }}</textarea>
