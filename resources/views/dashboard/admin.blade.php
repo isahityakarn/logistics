@@ -18,10 +18,10 @@
             <a href="{{ route('admin.companies') }}" class="text-decoration-none">
                 <div class="card card-shadow border-0 h-100 hover-card">
                     <div class="card-body text-center">
-                        <i class="bi bi-building text-success" style="font-size: 2rem;"></i>
-                        <h5 class="card-title mt-3">Companies</h5>
-                        <h2 class="text-success">{{ $totalCompanies }}</h2>
-                        <small class="text-muted">Click to view all</small>
+                        <i class="bi bi-truck text-warning" style="font-size: 2rem;"></i>
+                        <h5 class="card-title mt-3">Load</h5>
+                        <h2 class="text-success">{{ $totalLoads }}</h2>
+                        {{-- <small class="text-muted">Click to view all</small> --}}
                     </div>
                 </div>
             </a>
@@ -30,10 +30,10 @@
             <a href="{{ route('admin.drivers') }}" class="text-decoration-none">
                 <div class="card card-shadow border-0 h-100 hover-card">
                     <div class="card-body text-center">
-                        <i class="bi bi-truck text-warning" style="font-size: 2rem;"></i>
-                        <h5 class="card-title mt-3">Drivers</h5>
-                        <h2 class="text-warning">{{ $totalDrivers }}</h2>
-                        <small class="text-muted">Click to view all</small>
+                        <i class="bi bi-currency-rupee text-success" style="font-size: 2rem;"></i>
+                        <h5 class="card-title mt-3">Bids</h5>
+                        <h2 class="text-warning">{{ $totalBids }}</h2>
+                        {{-- <small class="text-muted">Click to view all</small> --}}
                     </div>
                 </div>
             </a>
@@ -42,8 +42,8 @@
             <div class="card card-shadow border-0 h-100">
                 <div class="card-body text-center">
                     <i class="bi bi-shield-check text-info" style="font-size: 2rem;"></i>
-                    <h5 class="card-title mt-3">Admins</h5>
-                    <h2 class="text-info">{{ $totalAdmins }}</h2>
+                    <h5 class="card-title mt-3">Loads Completed</h5>
+                    <h2 class="text-info">{{ $totalLoadsCompleted }}</h2>
                 </div>
             </div>
         </div>

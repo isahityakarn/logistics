@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bid;
+use App\Models\Load;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -32,17 +34,20 @@ class DashboardController extends Controller
     public function adminDashboard()
     {
         $totalUsers = User::count();
-        $totalCompanies = User::where('user_type', 'company')->count();
-        $totalDrivers = User::where('user_type', 'driver')->count();
-        $totalAdmins = User::where('user_type', 'admin')->count();
+        $totalLoads = Load::count();
+        $totalBids = Bid::count();
+        $totalLoadsCompleted = Load::where('status', 'completed')->count();
+        // $totalDrivers = User::where('user_type', 'driver')->count();
+        // $totalAdmins = User::where('user_type', 'admin')->count();
+        
         $recentDrivers = User::where('user_type', 'driver')->latest()->take(5)->get();
         $recentCompanies = User::where('user_type', 'company')->latest()->take(5)->get();
         
         return view('dashboard.admin', compact(
             'totalUsers',
-            'totalCompanies',
-            'totalDrivers',
-            'totalAdmins',
+            'totalLoads',
+            'totalBids',
+            'totalLoadsCompleted',
             'recentDrivers',
             'recentCompanies'
         ));
