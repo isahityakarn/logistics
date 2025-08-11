@@ -27,7 +27,8 @@ class BidController extends Controller
     public function create(Request $request)
     {
         $loads = Load::all();
-        $drivers = User::where('user_type', 'driver')->get();
+        $drivers = User::orderby('id', 'desc')->get();
+        // dd($drivers);
         $selectedLoadId = $request->query('load_id');
         return view('admin.bids.create', compact('loads', 'drivers', 'selectedLoadId'));
     }

@@ -19,6 +19,7 @@ class LoadController extends Controller
     }
     public function index()
     {
+        
         $loads = Load::all();
         return view('admin.loads.index', compact('loads'));
     }

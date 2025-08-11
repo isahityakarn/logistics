@@ -11,6 +11,7 @@ class UserController extends Controller
     {
         $drivers = User::where('user_type', 'driver')->get();
         $companies = User::where('user_type', 'company')->get();
-        return view('admin.users.by_type', compact('drivers', 'companies'));
+        $all = User::where('user_type','!=', 'admin')->orderby('id', 'desc')->paginate(15);
+        return view('admin.users.by_type', compact('drivers', 'companies', 'all'));
     }
 }

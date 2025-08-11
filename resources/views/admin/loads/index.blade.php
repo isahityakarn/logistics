@@ -6,9 +6,9 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex justify-content-end mb-3">
-            @if (Auth::user()->user_type != 'driver')
-                <a href="{{ route('loads.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add New Load</a>
-            @endif
+
+            <a href="{{ route('loads.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add New Load</a>
+
 
         </div>
         <form method="GET" action="" class="mb-3">
@@ -126,22 +126,25 @@
                                         </td>
                                         <td>{{ $load->created_at ? $load->created_at->format('M d, Y') : '' }}</td>
                                         <td>
-                                            @if (Auth::user()->user_type === 'admin' || Auth::user()->user_type === 'company')
-                                                <a href="{{ route('loads.show', $load) }}" class="btn btn-info btn-sm"
-                                                    title="View">
-                                                    <i class="fas fa-eye"></i>
-                                                </a>
 
+                                            <a href="{{ route('loads.show', $load) }}" class="btn btn-info btn-sm"
+                                                title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            @if ($load->company_id == Auth::user()->id)
                                                 <a href="{{ route('loads.edit', $load) }}" class="btn btn-warning btn-sm"
                                                     title="Edit">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
+                                            @endif
 
-                                                <a href="{{ route('bids.create', ['load_id' => $load->id]) }}"
-                                                    class="btn btn-primary btn-sm" title="Assign Bid">
-                                                    <i class="fas fa-gavel"></i> Assign Bid
-                                                </a>
 
+
+                                            <a href="{{ route('bids.create', ['load_id' => $load->id]) }}"
+                                                class="btn btn-primary btn-sm" title="Assign Bid">
+                                                <i class="fas fa-gavel"></i> Assign Bid
+                                            </a>
+                                            @if ($load->company_id == Auth::user()->id)
                                                 <form action="{{ route('loads.changeStatus', $load->id) }}" method="POST"
                                                     class="d-inline">
                                                     @csrf
@@ -193,17 +196,6 @@
                                                 </form>
                                             @endif
 
-
-                                            @if (Auth::user()->user_type === 'driver')
-                                                <a href="{{ route('loads.show', $load) }}" class="btn btn-info btn-sm"
-                                                    title="View">
-                                                    <i class="fas fa-eye"></i>
-                                                </a>
-                                                <a href="{{ route('bids.create', ['load_id' => $load->id]) }}"
-                                                    class="btn btn-primary btn-sm" title="Assign Bid">
-                                                    <i class="fas fa-gavel"></i> Assign Bid
-                                                </a>
-                                            @endif
                                         </td>
                                     </tr>
                                 @empty
