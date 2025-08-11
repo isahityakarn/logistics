@@ -4,11 +4,12 @@
 @section('page-title', 'Loads Dashboard')
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid">   
         <div class="col-lg-12">
             <div class="card shadow-lg">
                 <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0"><i class="fas fa-plus-circle"></i> Create Load</h4>
+                    <h4 class="mb-0"><i class="fas fa-plus-circle"></i> 
+                        Create Load</h4>
                 </div>
                 <div class="card-body">
                     @if ($errors->any())
@@ -33,9 +34,12 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-12 mb-3">
-                                                <label class="form-label">Location full Address with country <span
+                                                <label class="form-label">Location full Address with country 
+                                                   
+                                                    
+                                                    <span
                                                         class="text-danger">*</span></label>
-                                                <input type="text" name="pickup_location" class="form-control"
+                                                <input type="text" id="pickup_location" name="pickup_location" class="form-control"
                                                     value="{{ old('pickup_location') }}">
                                             </div>
                                             <div class="col-md-6 mb-3">
@@ -97,7 +101,7 @@
                                             <div class="col-md-12 mb-3">
                                                 <label class="form-label">Location Full Address with Country <span
                                                         class="text-danger">*</span></label>
-                                                <input type="text" name="delivery_location" class="form-control"
+                                                <input type="text" id="delivery_location" name="delivery_location" class="form-control"
                                                     value="{{ old('delivery_location') }}">
                                             </div>
                                             <div class="col-md-6 mb-3">
@@ -793,7 +797,9 @@
         </div>
     </div>
 
-    @push('scripts')
+   
+@endsection
+ @push('scripts')
         <script>
             function toggleOtherJobDescription() {
                 var select = document.getElementById('job_description_select');
@@ -808,5 +814,19 @@
                 toggleOtherJobDescription();
             });
         </script>
+    @push('scripts')
+        <script src="https://maps.gomaps.pro/maps/api/js?key=AlzaSyb51YmT6w3FS42W8x9Bhl_sxD4vcwO066L&libraries=places"></script>
+        <script>
+            function initializeAutocomplete() {
+                var pickupInput = document.getElementById('pickup_location');
+                if (pickupInput) {
+                    new google.maps.places.Autocomplete(pickupInput, { types: ['geocode'] });
+                }
+                var deliveryInput = document.getElementById('delivery_location');
+                if (deliveryInput) {
+                    new google.maps.places.Autocomplete(deliveryInput, { types: ['geocode'] });
+                }
+            }
+            document.addEventListener('DOMContentLoaded', initializeAutocomplete);
+        </script>
     @endpush
-@endsection
