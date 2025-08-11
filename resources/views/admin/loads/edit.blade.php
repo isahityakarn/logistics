@@ -35,7 +35,7 @@
                                         <div class="row">
                                             <div class="col-md-12 mb-3">
                                                 <label class="form-label">Location full Address with country <span class="text-danger">*</span></label>
-                                                <input type="text" name="pickup_location" class="form-control" value="{{ old('pickup_location', $load->pickup_location) }}">
+                                                <input type="text" id="pickup_location" name="pickup_location" class="form-control" value="{{ old('pickup_location', $load->pickup_location) }}">
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Phone <span class="text-danger">*</span></label>
@@ -78,7 +78,7 @@
                                         <div class="row">
                                             <div class="col-md-12 mb-3">
                                                 <label class="form-label">Location Full Address with Country <span class="text-danger">*</span></label>
-                                                <input type="text" name="delivery_location" class="form-control" value="{{ old('delivery_location', $load->delivery_location) }}">
+                                                <input type="text" id="delivery_location" name="delivery_location" class="form-control" value="{{ old('delivery_location', $load->delivery_location) }}">
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Phone <span class="text-danger">*</span></label>
@@ -405,4 +405,20 @@
             </div>
         </div>
     </div>
+@push('scripts')
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+    <script>
+        function initializeAutocomplete() {
+            var pickupInput = document.getElementById('pickup_location');
+            if (pickupInput) {
+                new google.maps.places.Autocomplete(pickupInput, { types: ['geocode'] });
+            }
+            var deliveryInput = document.getElementById('delivery_location');
+            if (deliveryInput) {
+                new google.maps.places.Autocomplete(deliveryInput, { types: ['geocode'] });
+            }
+        }
+        document.addEventListener('DOMContentLoaded', initializeAutocomplete);
+    </script>
+@endpush
 @endsection

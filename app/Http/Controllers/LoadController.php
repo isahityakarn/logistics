@@ -20,7 +20,7 @@ class LoadController extends Controller
     public function index()
     {
         
-        $loads = Load::all();
+        $loads = Load::latest()->paginate(10);
         return view('admin.loads.index', compact('loads'));
     }
 

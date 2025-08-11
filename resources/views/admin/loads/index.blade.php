@@ -100,7 +100,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($loads->take(5) as $load)
+                                @forelse($loads as $load)
                                     <tr>
                                         <td>{{ $load->id }}</td>
                                         {{-- <td>{{ $load->company_id }}</td> --}}
@@ -205,6 +205,9 @@
                                 @endforelse
                             </tbody>
                         </table>
+                        <div class="p-3">
+                            {{ $loads->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
