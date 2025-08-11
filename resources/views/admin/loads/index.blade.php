@@ -38,7 +38,7 @@
                 </div>
             </div>
         </form>
-        <div class="row mb-4">
+        {{-- <div class="row mb-4">
             <div class="col-md-3">
                 <div class="card text-center shadow-sm">
                     <div class="card-body">
@@ -54,7 +54,7 @@
                         <div class="mb-2" style="font-size:2rem;"><i class="fas fa-building"></i></div>
                         <div>Companies</div>
                         <div class="h3">{{ $companiesCount ?? '-' }}</div>
-                        {{-- <small>Click to view all</small> --}}
+                       
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                         <div class="mb-2" style="font-size:2rem;"><i class="fas fa-truck"></i></div>
                         <div>Drivers</div>
                         <div class="h3">{{ $driversCount ?? '-' }}</div>
-                        {{-- <small>Click to view all</small> --}}
+                       
                     </div>
                 </div>
             </div>
@@ -77,7 +77,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="row">
             <div class="col-md-12">

@@ -39,17 +39,19 @@ class DashboardController extends Controller
         $totalLoadsCompleted = Load::where('status', 'completed')->count();
         // $totalDrivers = User::where('user_type', 'driver')->count();
         // $totalAdmins = User::where('user_type', 'admin')->count();
-        
-        $recentDrivers = User::where('user_type', 'driver')->latest()->take(5)->get();
-        $recentCompanies = User::where('user_type', 'company')->latest()->take(5)->get();
+
+        $recentUsers = User::orderby('id', 'desc')->latest()->take(5)->get();
+        $recentLoad = Load::orderby('id', 'desc')->latest()->take(5)->get();
+        $recentBid = Bid::orderby('id', 'desc')->latest()->take(5)->get();
         
         return view('dashboard.admin', compact(
             'totalUsers',
             'totalLoads',
             'totalBids',
             'totalLoadsCompleted',
-            'recentDrivers',
-            'recentCompanies'
+            'recentUsers',
+            'recentLoad',
+            'recentBid'
         ));
     }
 

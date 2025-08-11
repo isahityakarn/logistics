@@ -49,15 +49,14 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-lg-8 mb-4">
+    
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="card card-shadow border-0 mb-4">
                         <div class="card-header gradient-bg text-white">
                             <h5 class="mb-0">
                                 <i class="bi bi-person-badge"></i>
-                                Recent Drivers
+                                Recent Users
                             </h5>
                         </div>
                         <div class="card-body">
@@ -67,15 +66,15 @@
                                         <tr>
                                             <th>Name</th>
                                             <th>Email</th>
-                                            <th>Joined</th>
+                                            {{-- <th>Joined</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($recentDrivers as $user)
+                                        @foreach($recentUsers as $user)
                                         <tr>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
-                                            <td>{{ $user->created_at->format('M d, Y') }}</td>
+                                            {{-- <td>{{ $user->created_at->format('M d, Y') }}</td> --}}
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -84,12 +83,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="card card-shadow border-0 mb-4">
                         <div class="card-header gradient-bg text-white">
                             <h5 class="mb-0">
                                 <i class="bi bi-building"></i>
-                                Recent Companies
+                                Recent Load
                             </h5>
                         </div>
                         <div class="card-body">
@@ -97,17 +96,49 @@
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Joined</th>
+                                            <th>Pickup Location</th>
+                                            <th>Dropoff Location</th>
+                                            <th>KM</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($recentCompanies as $user)
+                                        @foreach($recentLoad as $load)
                                         <tr>
-                                            <td>{{ $user->name }}</td>
-                                            <td>{{ $user->email }}</td>
-                                            <td>{{ $user->created_at->format('M d, Y') }}</td>
+                                            <td>{{ $load->pickup_location }}</td>
+                                            <td>{{ $load->delivery_location }}</td>
+                                            <td>{{ $load->distance_km }} KM</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-shadow border-0 mb-4">
+                        <div class="card-header gradient-bg text-white">
+                            <h5 class="mb-0">
+                                <i class="bi bi-building"></i>
+                                Recent Bid
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Company</th>
+                                            <th>Price</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($recentBid as $user)
+                                        <tr>
+                                            <td>{{ $user->loadRelation->pickup_company  }}</td>
+                                            <td>{{ $user->price }}</td>
+                                            <td>{{ $user->status }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -119,35 +150,6 @@
             </div>
         </div>
 
-        <div class="col-lg-4 mb-4">
-            <div class="card card-shadow border-0">
-                <div class="card-header gradient-bg text-white">
-                    <h5 class="mb-0">
-                        <i class="bi bi-gear"></i>
-                        Quick Actions
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <div class="d-grid gap-2">
-                        <a href="{{ route('register') }}" class="btn btn-outline-primary">
-                            <i class="bi bi-person-plus"></i>
-                            Add New User
-                        </a>
-                        <a href="{{ route('register') }}?type=company" class="btn btn-outline-success">
-                            <i class="bi bi-building-add"></i>
-                            Register Company
-                        </a>
-                        <a href="{{ route('register') }}?type=driver" class="btn btn-outline-warning">
-                            <i class="bi bi-truck"></i>
-                            Add Driver
-                        </a>
-                        <a href="#" class="btn btn-outline-info" onclick="alert('Reports feature coming soon!')">
-                            <i class="bi bi-graph-up"></i>
-                            View Reports
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+      
     </div>
 @endsection

@@ -89,7 +89,7 @@
                                                 <span class="badge bg-warning">Available</span>
                                             </td>
                                             <td>
-                                                <a href="#" class="btn btn-sm btn-primary">
+                                                <a href="{{ route('loads.show', $job->id) }}" class="btn btn-sm btn-primary">
                                                     <i class="bi bi-eye"></i>
                                                     View
                                                 </a>
@@ -128,7 +128,7 @@
                             </table>
                         </div>
                         <div class="text-center mt-3">
-                            <a href="" class="btn btn-outline-primary">
+                            <a href="{{ route('loads.index') }}" class="btn btn-outline-primary">
                                 <i class="bi bi-list-ul"></i>
                                 View All Available Loads
                             </a>
