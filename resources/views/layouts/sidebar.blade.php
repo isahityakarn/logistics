@@ -79,7 +79,7 @@
             <a class="nav-link {{ request()->routeIs('admin.users.byType') ? 'active' : '' }}"
                 href="{{ route('admin.users.byType') }}">
                 <i class="bi bi-people"></i>
-                Users by Type
+                Users 
             </a>
         </li>
 

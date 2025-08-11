@@ -17,10 +17,13 @@ class LoadController extends Controller
         $load->save();
         return redirect()->back()->with('success', 'Status updated successfully.');
     }
-    public function index()
+    public function index(Request $request)
     {
-        
-        $loads = Load::latest()->paginate(10);
+        $query = Load::query();
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+        $loads = $query->latest()->paginate(10)->appends($request->all());
         return view('admin.loads.index', compact('loads'));
     }
 
