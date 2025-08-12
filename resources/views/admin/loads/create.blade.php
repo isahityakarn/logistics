@@ -4,11 +4,11 @@
 @section('page-title', 'Loads Dashboard')
 
 @section('content')
-    <div class="container-fluid">   
+    <div class="container-fluid">
         <div class="col-lg-12">
             <div class="card shadow-lg">
                 <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0"><i class="fas fa-plus-circle"></i> 
+                    <h4 class="mb-0"><i class="fas fa-plus-circle"></i>
                         Create Load</h4>
                 </div>
                 <div class="card-body">
@@ -34,14 +34,12 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-12 mb-3">
-                                                <label class="form-label">Location full Address with country 
-                                                   
-                                                    
-                                                    <span
-                                                        class="text-danger">*</span></label>
-                                                <input type="text" id="pickup_location" name="pickup_location" class="form-control"
-                                                    value="{{ old('pickup_location') }}">
+                                                <label class="form-label">Location full Address with country
+                                                    <span class="text-danger">*</span></label>
+                                                <input type="text" id="pickup_location" name="pickup_location"
+                                                    class="form-control" value="{{ old('pickup_location') }}">
                                             </div>
+                                            
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Phone <span class="text-danger">*</span></label>
                                                 <input type="text" name="pickup_phone" class="form-control"
@@ -58,18 +56,18 @@
                                                 <label class="form-label">Additional Info</label>
                                                 <textarea name="pickup_additional_info" class="form-control">{{ old('pickup_additional_info') }}</textarea>
                                             </div>
-                                        
-                                            {{-- <div class="col-md-3 mb-3">
-                                                <label class="form-label">Latitude</label>
-                                                <input type="number" step="any" name="pickup_latitude"
+
+                                            <div class="col-md-6 mb-3">
+                                                {{-- <label class="form-label">Latitude</label> --}}
+                                                <input type="hidden" step="any" name="pickup_latitude" id="pickup_latitude"
                                                     class="form-control" value="{{ old('pickup_latitude') }}">
                                             </div>
-                                            <div class="col-md-3 mb-3">
-                                                <label class="form-label">Longitude</label>
-                                                <input type="number" step="any" name="pickup_longitude"
+                                            <div class="col-md-6 mb-3">
+                                                {{-- <label class="form-label">Longitude</label> --}}
+                                                <input type="hidden" step="any" name="pickup_longitude" id="pickup_longitude"
                                                     class="form-control" value="{{ old('pickup_longitude') }}">
                                             </div>
-                                             --}}
+                                            
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6 mb-3">
@@ -101,8 +99,8 @@
                                             <div class="col-md-12 mb-3">
                                                 <label class="form-label">Location Full Address with Country <span
                                                         class="text-danger">*</span></label>
-                                                <input type="text" id="delivery_location" name="delivery_location" class="form-control"
-                                                    value="{{ old('delivery_location') }}">
+                                                <input type="text" id="delivery_location" name="delivery_location"
+                                                    class="form-control" value="{{ old('delivery_location') }}">
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Phone <span class="text-danger">*</span></label>
@@ -120,16 +118,16 @@
                                                 <label class="form-label">Additional Info</label>
                                                 <textarea name="delivery_additional_info" class="form-control">{{ old('delivery_additional_info') }}</textarea>
                                             </div>
-                                            {{-- <div class="col-md-3 mb-3">
-                                                <label class="form-label">Latitude</label>
-                                                <input type="number" step="any" name="delivery_latitude"
+                                            <div class="col-md-6 mb-3">
+                                                {{-- <label class="form-label">Latitude</label> --}}
+                                                <input type="hidden" step="any" name="delivery_latitude" id="delivery_latitude"
                                                     class="form-control" value="{{ old('delivery_latitude') }}">
                                             </div>
-                                            <div class="col-md-3 mb-3">
-                                                <label class="form-label">Longitude</label>
-                                                <input type="number" step="any" name="delivery_longitude"
+                                            <div class="col-md-6 mb-3">
+                                                {{-- <label class="form-label">Longitude</label> --}}
+                                                <input type="hidden" step="any" name="delivery_longitude" id="delivery_longitude"
                                                     class="form-control" value="{{ old('delivery_longitude') }}">
-                                            </div> --}}
+                                            </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6 mb-3">
@@ -311,7 +309,7 @@
                                                 <input type="number" step="any" name="gross_weight"
                                                     class="form-control" value="{{ old('gross_weight') }}">
                                             </div>
-                                                 <div class="col-md-3 mb-3">
+                                            <div class="col-md-3 mb-3">
                                                 <label class="form-label">Weight Unit</label>
                                                 <select name="weight_unit" id="weight_unit_select" class="form-control"
                                                     onchange="toggleOtherWeightUnit()">
@@ -389,7 +387,7 @@
                                             @endpush
                                         </div>
                                         <div class="row">
-                                       
+
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Body Type</label>
                                                 <select name="body_type" id="body_type_select" class="form-control"
@@ -675,7 +673,7 @@
                                             @endpush
                                         </div>
                                         <div class="row">
-                                        
+
                                             <div class="col-md-12 mb-3">
                                                 <label class="form-label">Notes</label>
                                                 <textarea name="notes" class="form-control">{{ old('notes') }}</textarea>
@@ -702,12 +700,12 @@
                                                 <label class="form-label">Upload Document</label>
                                                 <input type="file" name="upload_document" class="form-control">
                                             </div>
-                                            <div class="col-md-6 mb-3">
+                                            {{-- <div class="col-md-6 mb-3">
                                                 <label class="form-label">Distance (km)</label>
                                                 <input type="number" step="any" name="distance_km"
                                                     class="form-control" value="{{ old('distance_km') }}">
-                                            </div>
-                                                <div class="col-md-6 mb-3">
+                                            </div> --}}
+                                            <div class="col-md-6 mb-3">
                                                 <label class="form-label">Status</label>
                                                 <select name="status" class="form-control">
                                                     <option value="pending"
@@ -760,7 +758,7 @@
                                                 <input type="text" name="currency" class="form-control"
                                                     value="{{ old('currency') }}">
                                             </div> --}}
-                                        
+
                                         </div>
                                     </div>
                                 </div>
@@ -797,34 +795,58 @@
         </div>
     </div>
 
-   
+
 @endsection
- @push('scripts')
-        <script>
-            function toggleOtherJobDescription() {
-                var select = document.getElementById('job_description_select');
-                var otherInput = document.getElementById('job_description_other');
-                if (select.value === 'Other') {
-                    otherInput.style.display = 'block';
-                } else {
-                    otherInput.style.display = 'none';
-                }
+@push('scripts')
+    <script>
+        function toggleOtherJobDescription() {
+            var select = document.getElementById('job_description_select');
+            var otherInput = document.getElementById('job_description_other');
+            if (select.value === 'Other') {
+                otherInput.style.display = 'block';
+            } else {
+                otherInput.style.display = 'none';
             }
-            document.addEventListener('DOMContentLoaded', function() {
-                toggleOtherJobDescription();
-            });
-        </script>
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleOtherJobDescription();
+        });
+    </script>
     @push('scripts')
         <script src="https://maps.gomaps.pro/maps/api/js?key=AlzaSyb51YmT6w3FS42W8x9Bhl_sxD4vcwO066L&libraries=places"></script>
         <script>
             function initializeAutocomplete() {
                 var pickupInput = document.getElementById('pickup_location');
                 if (pickupInput) {
-                    new google.maps.places.Autocomplete(pickupInput, { types: ['geocode'] });
+                    var pickupAutocomplete = new google.maps.places.Autocomplete(pickupInput, {
+                        types: ['geocode']
+                    });
+                    pickupAutocomplete.addListener('place_changed', function() {
+                        var place = pickupAutocomplete.getPlace();
+                        if (place.geometry && place.geometry.location) {
+                            var lat = place.geometry.location.lat();
+                            var lng = place.geometry.location.lng();
+                            document.getElementById('pickup_latitude').value = lat;
+                            document.getElementById('pickup_longitude').value = lng;
+                            console.log('Pickup Latitude:', lat, 'Longitude:', lng);
+                        }
+                    });
                 }
                 var deliveryInput = document.getElementById('delivery_location');
                 if (deliveryInput) {
-                    new google.maps.places.Autocomplete(deliveryInput, { types: ['geocode'] });
+                    var deliveryAutocomplete = new google.maps.places.Autocomplete(deliveryInput, {
+                        types: ['geocode']
+                    });
+                    deliveryAutocomplete.addListener('place_changed', function() {
+                        var place = deliveryAutocomplete.getPlace();
+                        if (place.geometry && place.geometry.location) {
+                            var lat = place.geometry.location.lat();
+                            var lng = place.geometry.location.lng();
+                            document.getElementById('delivery_latitude').value = lat;
+                            document.getElementById('delivery_longitude').value = lng;
+                            console.log('Delivery Latitude:', lat, 'Longitude:', lng);
+                        }
+                    });
                 }
             }
             document.addEventListener('DOMContentLoaded', initializeAutocomplete);

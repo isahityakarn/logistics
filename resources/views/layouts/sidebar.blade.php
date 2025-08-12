@@ -64,6 +64,13 @@
                 Load
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('loadsmy') ? 'active' : '' }}"
+                href="{{ route('loadsmy') }}">
+                <i class="bi bi-shield-check"></i>
+                My Loads
+            </a>
+        </li>
 
 
         <li class="nav-item">
@@ -79,9 +86,18 @@
             <a class="nav-link {{ request()->routeIs('admin.users.byType') ? 'active' : '' }}"
                 href="{{ route('admin.users.byType') }}">
                 <i class="bi bi-people"></i>
-                Users 
+                Directory 
             </a>
         </li>
+
+           <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('map.pickup') ? 'active' : '' }}"
+                href="{{ route('map.pickup') }}">
+                <i class="bi bi-people"></i>
+                MAP 
+            </a>
+        </li>
+
 
         <li class="nav-item">
             <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
