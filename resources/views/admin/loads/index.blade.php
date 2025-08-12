@@ -1,3 +1,4 @@
+                        
 @extends('layouts.dashboard')
 
 @section('title', 'Loads Dashboard')
@@ -94,6 +95,13 @@
                                 </div>
                                 <div class="row g-0">
                                     <div class="col-4 ps-0 d-flex align-items-start" style="text-align:left;">
+                                        <span style="min-width: 80px;"><strong>Company</strong></span>
+                                        <span class="mx-1">:</span>
+                                    </div>
+                                    <div class="col-8 ps-2">{{ $load->pickup_company }}</div>
+                                </div>
+                                <div class="row g-0">
+                                    <div class="col-4 ps-0 d-flex align-items-start" style="text-align:left;">
                                         <span style="min-width: 80px;"><strong>Pickup</strong></span>
                                         <span class="mx-1">:</span>
                                     </div>
@@ -106,6 +114,7 @@
                                     </div>
                                     <div class="col-8 ps-2">{{ $load->delivery_location }}</div>
                                 </div>
+                       
                                 <div class="row g-0">
                                     <div class="col-4 ps-0 d-flex align-items-start" style="text-align:left;">
                                         <span style="min-width: 80px;"><strong>Distance</strong></span>
@@ -133,9 +142,14 @@
                             <a href="{{ route('loads.show', $load) }}" class="btn btn-sm btn-primary">
                                 <i class="fas fa-eye"></i> View
                             </a>
-                            <a href="{{ route('bids.create', ['load_id' => $load->id]) }}" class="btn btn-sm btn-primary">
-                                <i class="fas fa-gavel"></i> Assign Bid
-                            </a>
+                            <div>
+                                <a href="{{ route('bids.index', ['load_id' => $load->id]) }}" class="btn btn-sm btn-info me-1">
+                                    <i class="fas fa-list"></i> Show Bids
+                                </a>
+                                <a href="{{ route('bids.create', ['load_id' => $load->id]) }}" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-gavel"></i> Assign Bid
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -9,20 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class BidController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // Show only the current driver's bids if user is a driver
-        // if (Auth::user() && Auth::user()->user_type === 'driver') {
-        //     $bids = Bid::with(['loadRelation', 'driver'])
-        //         ->where('driver_id', Auth::id())
-        //         ->latest()
-        //         ->paginate(10);
-        // } else {
-            
-        //     $bids = Bid::with(['loadRelation', 'driver'])->latest()->paginate(10);
-        // }
-
-        $bids = Bid::with(['loadRelation', 'driver'])->latest()->paginate(10);
+        $query = Bid::with(['loadRelation', 'driver']);
+        if ($request->has('load_id') && $request->load_id) {
+            $query->where('load_id', $request->load_id);
+        }
+        $bids = $query->latest()->paginate(10);
         return view('admin.bids.index', compact('bids'));
     }
 

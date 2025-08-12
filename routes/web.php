@@ -1,14 +1,15 @@
 
 
 <?php
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\LoadController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BidController;
 use App\Http\Controllers\MapController;
+use App\Http\Controllers\LoadController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 
 Route::get('/map/pickup', [MapController::class, 'pickupMap'])->name('map.pickup')->middleware('auth');
@@ -37,7 +38,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'adminDashboard'])->name('admin.dashboard');
     Route::get('/drivers', [DashboardController::class, 'listDrivers'])->name('admin.drivers');
     Route::get('/companies', [DashboardController::class, 'listCompanies'])->name('admin.companies');
-    Route::get('/users/by-type', [\App\Http\Controllers\UserController::class, 'byType'])->name('admin.users.byType');
+    Route::get('/users/by-type', [UserController::class, 'byType'])->name('admin.users.byType');
     // Logistics Load Routes for Admin
 });
 
