@@ -16,7 +16,7 @@ class MapController extends Controller
                 ->whereNotNull('pickup_longitude')
                 ->get();
 
-            // dd($pickupLocations); // Debugging line to check the data
+            // return $pickupLocations; // Debugging line to check the data
         return view('map.pickup_map', compact('pickupLocations'));
     }
 }

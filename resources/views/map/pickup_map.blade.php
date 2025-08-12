@@ -13,6 +13,7 @@
                 </div>
                 <div class="card-body">
                     <div id="indiaMap" style="height: 600px; width: 100%;"></div>
+                    {{-- <pre>DEBUG: @json($pickupLocations)</pre> --}}
                 </div>
             </div>
         </div>
