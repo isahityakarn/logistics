@@ -80,37 +80,6 @@
                             </button>
                         </div>
                     </form>
-
-                    <!-- Driver Quick Access Section -->
-                    <div class="text-center mt-4 mb-4">
-                        <div class="border-top pt-4">
-                            <h6 class="text-muted mb-3">
-                                <i class="bi bi-truck"></i>
-                                For Drivers
-                            </h6>
-                            <p class="small text-muted mb-3">
-                                Quick access for drivers to login and view logistics jobs
-                            </p>
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                                <button type="button" class="btn btn-outline-primary btn-sm" 
-                                        onclick="document.getElementById('email').focus(); document.getElementById('email').placeholder='Enter driver email address';">
-                                    <i class="bi bi-person"></i>
-                                    Driver Login
-                                </button>
-                                <button type="button" class="btn btn-primary btn-sm" 
-                                        onclick="document.getElementById('redirect_to_jobs').value='true'; document.getElementById('email').focus(); document.getElementById('email').placeholder='Driver email for direct jobs access';">
-                                    <i class="bi bi-truck"></i>
-                                    Login & View Jobs
-                                </button>
-                            </div>
-                            <div class="mt-2">
-                                <small class="text-muted">
-                                    "Login & View Jobs" takes you directly to available logistics jobs
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="text-center mt-4">
                         <p class="mb-0">Don't have an account? 
                             <a href="{{ route('register') }}" class="text-decoration-none fw-bold">
