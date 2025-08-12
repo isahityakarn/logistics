@@ -80,138 +80,73 @@
         </div> --}}
 
         <div class="row">
-            <div class="col-md-12">
-                <div class="card shadow-sm mb-4">
-                    <div class="card-header bg-primary text-white">
-                        <i class="fas fa-list"></i> Recent Loads
-                    </div>
-                    <div class="card-body p-0">
-                        <table class="table mb-0">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    {{-- <th>Company</th> --}}
-                                    <th>Pickup</th>
-                                    <th>Delivery</th>
-                                    <th>Distance</th>
-                                    <th>Status</th>
-                                    <th>Created</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @forelse($loads as $load)
-                                    <tr>
-                                        <td>{{ $load->id }}</td>
-                                        {{-- <td>{{ $load->company_id }}</td> --}}
-                                        <td>{{ $load->pickup_location }}</td>
-                                        <td>{{ $load->delivery_location }}</td>
-                                        <td>{{ $load->distance_km }} KM</td>
-                                        <td>
-                                            @php
-                                                $statusColors = [
-                                                    'pending' => 'secondary',
-                                                    'assigned' => 'primary',
-                                                    'in_progress' => 'info',
-                                                    'picked_up' => 'warning',
-                                                    'in_transit' => 'dark',
-                                                    'delivered' => 'success',
-                                                    'completed' => 'success',
-                                                    'cancelled' => 'danger',
-                                                ];
-                                                $badgeColor = $statusColors[$load->status] ?? 'secondary';
-                                            @endphp
-                                            <span
-                                                class="badge bg-{{ $badgeColor }}">{{ ucfirst(str_replace('_', ' ', $load->status)) }}</span>
-                                        </td>
-                                        <td>{{ $load->created_at ? $load->created_at->format('M d, Y') : '' }}</td>
-                                        <td>
-
-                                            <a href="{{ route('loads.show', $load) }}" class="btn btn-info btn-sm"
-                                                title="View">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                            @if ($load->company_id == Auth::user()->id)
-                                                <a href="{{ route('loads.edit', $load) }}" class="btn btn-warning btn-sm"
-                                                    title="Edit">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-                                            @endif
-
-
-
-                                            <a href="{{ route('bids.create', ['load_id' => $load->id]) }}"
-                                                class="btn btn-primary btn-sm" title="Assign Bid">
-                                                <i class="fas fa-gavel"></i> Assign Bid
-                                            </a>
-                                            @if ($load->company_id == Auth::user()->id)
-                                                <form action="{{ route('loads.changeStatus', $load->id) }}" method="POST"
-                                                    class="d-inline">
-                                                    @csrf
-                                                    <select name="status"
-                                                        class="form-select form-select-sm d-inline w-auto status-dropdown"
-                                                        onchange="this.form.submit()"
-                                                        style="background-color: {{ $load->status == 'pending'
-                                                            ? '#6c757d'
-                                                            : ($load->status == 'assigned'
-                                                                ? '#0d6efd'
-                                                                : ($load->status == 'in_progress'
-                                                                    ? '#0dcaf0'
-                                                                    : ($load->status == 'picked_up'
-                                                                        ? '#ffc107'
-                                                                        : ($load->status == 'in_transit'
-                                                                            ? '#212529'
-                                                                            : ($load->status == 'delivered'
-                                                                                ? '#198754'
-                                                                                : ($load->status == 'completed'
-                                                                                    ? '#198754'
-                                                                                    : ($load->status == 'cancelled'
-                                                                                        ? '#dc3545'
-                                                                                        : '#6c757d'))))))) }}; color: #fff;">
-                                                        <option value="pending"
-                                                            {{ $load->status == 'pending' ? 'selected' : '' }}>Pending
-                                                        </option>
-                                                        <option value="assigned"
-                                                            {{ $load->status == 'assigned' ? 'selected' : '' }}>Assigned
-                                                        </option>
-                                                        <option value="in_progress"
-                                                            {{ $load->status == 'in_progress' ? 'selected' : '' }}>In
-                                                            Progress</option>
-                                                        <option value="picked_up"
-                                                            {{ $load->status == 'picked_up' ? 'selected' : '' }}>Picked Up
-                                                        </option>
-                                                        <option value="in_transit"
-                                                            {{ $load->status == 'in_transit' ? 'selected' : '' }}>In
-                                                            Transit</option>
-                                                        <option value="delivered"
-                                                            {{ $load->status == 'delivered' ? 'selected' : '' }}>Delivered
-                                                        </option>
-                                                        <option value="completed"
-                                                            {{ $load->status == 'completed' ? 'selected' : '' }}>Completed
-                                                        </option>
-                                                        <option value="cancelled"
-                                                            {{ $load->status == 'cancelled' ? 'selected' : '' }}>Cancelled
-                                                        </option>
-                                                    </select>
-                                                </form>
-                                            @endif
-
-                                        </td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="7" class="text-center">No loads found.</td>
-                                    </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-                        <div class="p-3">
-                            {{ $loads->links() }}
+            @forelse($loads as $load)
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <div class="mb-2">
+                                <div class="row g-0">
+                                    <div class="col-4 ps-0 d-flex align-items-start" style="text-align:left;">
+                                        <span style="min-width: 80px;"><strong>ID</strong></span>
+                                        <span class="mx-1">:</span>
+                                    </div>
+                                    <div class="col-8 ps-2">{{ $load->id }}</div>
+                                </div>
+                                <div class="row g-0">
+                                    <div class="col-4 ps-0 d-flex align-items-start" style="text-align:left;">
+                                        <span style="min-width: 80px;"><strong>Pickup</strong></span>
+                                        <span class="mx-1">:</span>
+                                    </div>
+                                    <div class="col-8 ps-2">{{ $load->pickup_location }}</div>
+                                </div>
+                                <div class="row g-0">
+                                    <div class="col-4 ps-0 d-flex align-items-start" style="text-align:left;">
+                                        <span style="min-width: 80px;"><strong>Delivery</strong></span>
+                                        <span class="mx-1">:</span>
+                                    </div>
+                                    <div class="col-8 ps-2">{{ $load->delivery_location }}</div>
+                                </div>
+                                <div class="row g-0">
+                                    <div class="col-4 ps-0 d-flex align-items-start" style="text-align:left;">
+                                        <span style="min-width: 80px;"><strong>Distance</strong></span>
+                                        <span class="mx-1">:</span>
+                                    </div>
+                                    <div class="col-8 ps-2">{{ number_format($load->distance_km, 2) }} KM</div>
+                                </div>
+                                <div class="row g-0">
+                                    <div class="col-4 ps-0 d-flex align-items-start" style="text-align:left;">
+                                        <span style="min-width: 80px;"><strong>Status</strong></span>
+                                        <span class="mx-1">:</span>
+                                    </div>
+                                    <div class="col-8 ps-2">{{ ucfirst(str_replace('_', ' ', $load->status)) }}</div>
+                                </div>
+                                <div class="row g-0">
+                                    <div class="col-4 ps-0 d-flex align-items-start" style="text-align:left;">
+                                        <span style="min-width: 80px;"><strong>Created</strong></span>
+                                        <span class="mx-1">:</span>
+                                    </div>
+                                    <div class="col-8 ps-2">{{ $load->created_at ? $load->created_at->format('M d, Y') : '' }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white border-0 d-flex justify-content-between">
+                            <a href="{{ route('loads.show', $load) }}" class="btn btn-sm btn-primary">
+                                <i class="fas fa-eye"></i> View
+                            </a>
+                            <a href="{{ route('bids.create', ['load_id' => $load->id]) }}" class="btn btn-sm btn-primary">
+                                <i class="fas fa-gavel"></i> Assign Bid
+                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
-
+            @empty
+                <div class="col-12">
+                    <div class="alert alert-info text-center">No loads found.</div>
+                </div>
+            @endforelse
+        </div>
+        <div class="p-3">
+            {{ $loads->links() }}
         </div>
     </div>
 @endsection

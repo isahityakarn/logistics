@@ -8,8 +8,10 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoadController;
 use App\Http\Controllers\BidController;
+use App\Http\Controllers\MapController;
 
 
+Route::get('/map/pickup', [MapController::class, 'pickupMap'])->name('map.pickup')->middleware('auth');
 
 Route::get('/', function () {
     if (Auth::check()) {
