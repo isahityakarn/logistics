@@ -813,7 +813,7 @@
         });
     </script>
     @push('scripts')
-        <script src="https://maps.gomaps.pro/maps/api/js?key=AlzaSyb51YmT6w3FS42W8x9Bhl_sxD4vcwO066L&libraries=places"></script>
+        <script src="https://maps.gomaps.pro/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places"></script>
         <script>
             function initializeAutocomplete() {
                 var pickupInput = document.getElementById('pickup_location');
