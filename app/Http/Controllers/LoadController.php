@@ -20,6 +20,31 @@ class LoadController extends Controller
     public function index(Request $request)
     {
         $query = Load::query();
+        // Filter by From (pickup_location)
+        if ($request->filled('from')) {
+            $query->where('pickup_location', 'like', '%' . $request->from . '%');
+        }
+        // Filter by To (delivery_location)
+        if ($request->filled('to')) {
+            $query->where('delivery_location', 'like', '%' . $request->to . '%');
+        }
+        // Filter by Vehicle size (suggested_vehicle)
+        if ($request->filled('vehicle_type')) {
+            $query->where('suggested_vehicle', $request->vehicle_type);
+        }
+        // Filter by Date and time (pickup_date_time_from or delivery_date_time_from)
+        if ($request->filled('date_time')) {
+            $query->whereDate('pickup_date_time_from', '=', date('Y-m-d', strtotime($request->date_time)));
+        }
+        // Filter by Radius (distance_km)
+        if ($request->filled('radius')) {
+            $query->where('distance_km', '<=', $request->radius);
+        }
+        // Filter by Packaging
+        if ($request->filled('packaging')) {
+            $query->where('packaging', $request->packaging);
+        }
+        // Filter by Status
         if ($request->filled('status')) {
             $query->where('status', $request->status);
         }
@@ -29,8 +54,33 @@ class LoadController extends Controller
 
     public function indexMy(Request $request)
     {
-         $id = Auth::user()->id;
+        $id = Auth::user()->id;
         $query = Load::query()->where('company_id', $id);
+        // Filter by From (pickup_location)
+        if ($request->filled('from')) {
+            $query->where('pickup_location', 'like', '%' . $request->from . '%');
+        }
+        // Filter by To (delivery_location)
+        if ($request->filled('to')) {
+            $query->where('delivery_location', 'like', '%' . $request->to . '%');
+        }
+        // Filter by Vehicle size (suggested_vehicle)
+        if ($request->filled('vehicle_type')) {
+            $query->where('suggested_vehicle', $request->vehicle_type);
+        }
+        // Filter by Date and time (pickup_date_time_from or delivery_date_time_from)
+        if ($request->filled('date_time')) {
+            $query->whereDate('pickup_date_time_from', '=', date('Y-m-d', strtotime($request->date_time)));
+        }
+        // Filter by Radius (distance_km)
+        if ($request->filled('radius')) {
+            $query->where('distance_km', '<=', $request->radius);
+        }
+        // Filter by Packaging
+        if ($request->filled('packaging')) {
+            $query->where('packaging', $request->packaging);
+        }
+        // Filter by Status
         if ($request->filled('status')) {
             $query->where('status', $request->status);
         }
