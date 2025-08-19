@@ -9,7 +9,10 @@
         <div class="col-md-12">
             <div class="card mb-4">
                 <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">All user11</h5>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">All user11</h5>
+                        <a href="{{ route('register') }}" class="btn btn-success">Add New User</a>
+                    </div>
                 </div>
                 <div class="card-body">
                     <form method="GET" action="{{ route('admin.users.byType') }}" class="mb-4">
