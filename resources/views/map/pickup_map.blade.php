@@ -12,6 +12,22 @@
                     <h5 class="mb-0">Pickup Locations on Indian Map</h5>
                 </div>
                 <div class="card-body">
+                    <form method="GET" action="{{ route('map.pickup') }}" class="mb-3">
+                        <div class="row g-3 align-items-end">
+                            <div class="col-md-4">
+                                <label for="pickup_location" class="form-label">Pickup location</label>
+                                <input type="text" id="pickup_location" name="pickup_location" value="{{ request('pickup_location') }}" class="form-control" placeholder="e.g., Mumbai">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="delivery_location" class="form-label">Drop location</label>
+                                <input type="text" id="delivery_location" name="delivery_location" value="{{ request('delivery_location') }}" class="form-control" placeholder="e.g., Delhi">
+                            </div>
+                            <div class="col-md-4 d-flex gap-2">
+                                <button type="submit" class="btn btn-primary">Filter</button>
+                                <a href="{{ route('map.pickup') }}" class="btn btn-outline-secondary">Reset</a>
+                            </div>
+                        </div>
+                    </form>
                     <div id="indiaMap" style="height: 600px; width: 100%;"></div>
                     {{-- <pre>DEBUG: @json($pickupLocations)</pre> --}}
                 </div>

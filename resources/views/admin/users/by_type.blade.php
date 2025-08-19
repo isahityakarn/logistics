@@ -12,6 +12,38 @@
                     <h5 class="mb-0">All user11</h5>
                 </div>
                 <div class="card-body">
+                    <form method="GET" action="{{ route('admin.users.byType') }}" class="mb-4">
+                        <div class="row g-3 align-items-end">
+                            <div class="col-md-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" id="name" name="name" value="{{ request('name') }}" class="form-control" placeholder="Search name">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" id="email" name="email" value="{{ request('email') }}" class="form-control" placeholder="Search email">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="text" id="phone" name="phone" value="{{ request('phone') }}" class="form-control" placeholder="Search phone">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" id="address" name="address" value="{{ request('address') }}" class="form-control" placeholder="Search address">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="created_from" class="form-label">Created from</label>
+                                <input type="date" id="created_from" name="created_from" value="{{ request('created_from') }}" class="form-control">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="created_to" class="form-label">Created to</label>
+                                <input type="date" id="created_to" name="created_to" value="{{ request('created_to') }}" class="form-control">
+                            </div>
+                            <div class="col-md-3 d-flex gap-2">
+                                <button type="submit" class="btn btn-primary">Filter</button>
+                                <a href="{{ route('admin.users.byType') }}" class="btn btn-outline-secondary">Reset</a>
+                            </div>
+                        </div>
+                    </form>
                     <div class="row">
                         @foreach($all as $user)
                             <div class="col-md-6 col-lg-4 mb-4">
@@ -59,7 +91,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    {{ $all->links() }}
+                    {{ $all->withQueryString()->links() }}
                 </div>
             </div>
         </div>
